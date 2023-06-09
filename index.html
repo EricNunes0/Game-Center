@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>Tic Tac Toe</title>
+        <link rel = "icon" href = "https://i.imgur.com/4TmQWfu.png">
+        <link rel = "stylesheet" href = "style.css">
+        <script type = "text/javascript" src = "color.js" defer></script>
+        <script type = "text/javascript" src = "help.js" defer></script>
+        <script type = "text/javascript" src = "script.js"></script>
+        <script type = "text/javascript" src = "theme.js"></script>
+    </head>
+    <body>
+        <main id = "game-main">
+            <input class = "page-configs" id = "theme" type = "hidden" value = "light">
+            <input class = "page-configs" id = "controls" type = "hidden" value = "closed">
+            <input class = "page-configs" id = "colors" type = "hidden" value = "closed">
+            <div class = "ttt-containers light" id = "ttt-container">
+                <div id = "configs-div">
+                    <div id = "theme-div">
+                        <button type = "button" id = "theme-button" onclick = "changeTheme()" tabindex="-1">
+                            <img class="theme-icons light" id = "theme-icon" src="https://i.imgur.com/EFjsg8D.png">
+                        </button>
+                    </div>
+                    <div id = "help-div">
+                        <button type = "button" id = "help-button" tabindex="-1">
+                            <img class="help-icons light" id = "help-icon" src="https://i.imgur.com/HsXPZix.png">
+                        </button>
+                    </div>
+                    <div id = "sound-div">
+                        <button type = "button" id = "sound-button" tabindex="-1" onclick = "audioConfig()">
+                            <img class="sound-icons light" id = "sound-icon" src="https://i.imgur.com/hmiIbPC.png">
+                        </button>
+                    </div>
+                    <div id = "color-div">
+                        <button type = "button" id = "color-button" tabindex="-1">
+                            <img class="color-icons light" id = "color-icon" src="https://i.imgur.com/416g7pe.png
+                            ">
+                        </button>
+                    </div>
+                </div>
+                <div class = "controls-mains closed" id = "controls-main">
+                    <div class = "controls-boards light" id = "controls-board">
+                        <div id = "controls-flex">
+                        </div>
+                    </div>
+                </div>
+                <div class = "colors-mains closed" id = "colors-main">
+                    <div class = "colors-boards light" id = "colors-board">
+                        <div id = "colors-flex">
+                            <div class = "colors-divs">
+                                <div class = "colors-input-divs">
+                                    <input class = "colors-inputs" id = "color-p1" type = "color" value = #3060ff>
+                                </div>
+                                <div class = "colors-texts-divs">
+                                    <div class = "colors-titles-divs">
+                                        <p class = "colors-titles light">Jogador 1</p>
+                                    </div>
+                                    <div class = "colors-descriptions-divs">
+                                        <p class = "colors-descriptions light">Escolha a cor do jogador 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "colors-divs">
+                                <div class = "colors-input-divs">
+                                    <input class = "colors-inputs" id = "color-p2" type = "color" value = #f02020>
+                                </div>
+                                <div class = "colors-texts-divs">
+                                    <div class = "colors-titles-divs">
+                                        <p class = "colors-titles light">Jogador 2</p>
+                                    </div>
+                                    <div class = "colors-descriptions-divs">
+                                        <p class = "colors-descriptions light">Escolha a cor do jogador 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class = "game-titles light" id = "game-title"><abbr title = "Jogo da velha">Tic Tac Toe</abbr></p>
+                <p class = "game-modes light" id = "game-mode">1 jogador</p>
+                <div id = "placar">
+                    <div class = "placar-areas" id = "p1-area">
+                        <span class = "pts-counters" id = "p1">0</span>
+                    </div>
+                    <div class = "placar-areas" id = "mode-area">
+                        <button id = "mode-button" onclick = "changeGamemode()">
+                            <img id = "mode-image" src = "https://i.imgur.com/eJiT4kJ.png">
+                        </button>
+                    </div>
+                    <div class = "placar-areas" id = "p2-area">
+                        <span class = "pts-counters" id = "p2">0</span>
+                    </div>
+                </div>
+                <p class = "alerts light hidden" id = "alert-message"></p>
+                <table id = "ttt-table">
+                    <tr>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-1" onclick = "tttInsert(1)">1</button>
+                        </td>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-2" onclick = "tttInsert(2)">2</button>
+                        </td>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-3" onclick = "tttInsert(3)">3</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-4" onclick = "tttInsert(4)">4</button>
+                        </td>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-5" onclick = "tttInsert(5)">5</button>
+                        </td>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-6" onclick = "tttInsert(6)">6</button>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-7" onclick = "tttInsert(7)">7</button>
+                        </td>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-8" onclick = "tttInsert(8)">8</button>
+                        </td>
+                        <td>
+                            <button class = "ttt-buttons light gray default" id = "ttt-9" onclick = "tttInsert(9)">9</button>
+                        </td>
+                        
+                    </tr>
+                </table>
+                <div id = "reset-container">
+                    <button class = "reset-buttons light" id = "reset-button" onclick = "tttReset()">Reiniciar</button>
+                    <button class = "clear-buttons light" id = "clear-button" onclick = "clearPlacar()">Limpar placar</button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
