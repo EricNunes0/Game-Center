@@ -631,7 +631,7 @@ abbr {
     font-size: 12pt;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    margin: 10px;
+    margin-top: 10px;
     transition: all 0.3s;
 }
 
@@ -663,6 +663,15 @@ abbr {
     #ttt-container {
         width: 60%;
     }
+}
+
+#madeby-text {
+    margin-top: 5px;
+    text-align: center;
+}
+
+#madeby-link {
+    color: #000;
 }
 
 /* Barra de scroll */
