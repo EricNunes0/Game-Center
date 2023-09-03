@@ -1,0 +1,142 @@
+:root {
+    /* Inimigo 0 */
+    --ss-enemy-0-width: 0;
+    --ss-enemy-0-height: 0;
+    --ss-enemy-0-shot-0-width: 0;
+    --ss-enemy-0-shot-0-height: 0;
+    /* Inimigo 1 */
+    --ss-enemy-1-width: 0;
+    --ss-enemy-1-height: 0;
+    --ss-enemy-1-shot-0-width: 0;
+    --ss-enemy-1-shot-0-height: 0;
+    /* Inimigo 2 */
+    --ss-enemy-2-width: 0;
+    --ss-enemy-2-height: 0;
+    --ss-enemy-2-shot-0-width: 0;
+    --ss-enemy-2-shot-0-height: 0;
+    --ss-enemy-2-shot-1-width: 0;
+    --ss-enemy-2-shot-1-height: 0;
+    /* Inimigo 3 */
+    --ss-enemy-3-width: 0;
+    --ss-enemy-3-height: 0;
+    --ss-enemy-3-shot-0-width: 0;
+    --ss-enemy-3-shot-0-height: 0;
+}
+
+/* Movimento do tiro (inimigo 0 - movimento 0) */
+@keyframes SSenemie0Move0 {
+    0%, 100% {
+        left: 0px;
+    }
+    50% {
+        left: calc(var(--ss-canvas-width) - var(--ss-enemy-0-width));
+    }
+}
+
+/* Movimento do tiro (inimigo 0 - movimento 1)*/
+@keyframes SSenemie0Move1 {
+    0%, 100% {
+        left: 0px;
+    }
+    17%, 67% {
+        top: calc(120px);
+    }
+    34%, 84% {
+        top: calc(80px);
+    }
+    50% {
+        left: calc(var(--ss-canvas-width) - var(--ss-enemy-0-width));
+    }
+}
+
+/* Movimento do tiro (inimigo 0 - movimento 2) */
+@keyframes SSenemie0Move2 {
+    0%, 50%, 100% {
+        width: 48px;
+        height: 48px;
+    }
+
+    25%, 75% {
+        width: 24px;
+        height: 24px;
+    }
+
+    0%, 100% {
+        left: 0px;
+    }
+    50% {
+        left: calc(var(--ss-canvas-width) - var(--ss-enemy-0-width));
+    }
+}
+
+/* Movimento do tiro (inimigo 2 - movimento 0) */
+@keyframes SSenemie2Move0 {
+    0%, 100% {
+        left: calc(calc(var(--ss-canvas-width) - var(--ss-enemy-0-width)) / 2);
+    }
+    25% {
+        left: 0px;
+    }
+    75% {
+        left: calc(var(--ss-canvas-width) - var(--ss-enemy-0-width));
+    }
+}
+
+/*
+*
+* Tiros
+*
+*/
+
+@keyframes Enemy0Shot0 {
+    100% {
+        top: calc(var(--ss-canvas-height) - var(--ss-enemy-0-shot-0-height));
+    }
+}
+
+@keyframes Enemy2Shot0 {
+    100% {
+        top: calc(var(--ss-canvas-height) - var(--ss-enemy-2-shot-0-height));
+    }
+}
+
+/* Movimento do tiro (inimigo 3 - movimento 0) */
+@keyframes SSenemie3Move0 {
+    0%, 100% {
+        top: 0px;
+        left: calc(calc(var(--ss-canvas-width) - var(--ss-enemy-3-width)) / 2);
+    }
+    17% {
+        top: 100px;
+        left: 0px;
+    }
+    33% {
+        top: 200px;
+        left: calc(var(--ss-canvas-width) - var(--ss-enemy-3-width));
+    }
+    50% {
+        top: 300px;
+        left: calc(calc(var(--ss-canvas-width) - var(--ss-enemy-3-width)) / 2);
+    }
+    67% {
+        top: 200px;
+        left: 0px;
+    }
+    83% {
+        top: 100px;
+        left: calc(var(--ss-canvas-width) - var(--ss-enemy-3-width));
+    }
+}
+
+/* Tiros de contra-ataque */
+.ss-back-shots {
+    position: absolute;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 0 10px #f00);
+}
+
+@keyframes BackShot {
+    100% {
+        top: var(--ss-canvas-height);
+    }
+}

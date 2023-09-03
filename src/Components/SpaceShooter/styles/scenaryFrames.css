@@ -1,0 +1,10 @@
+/* Terra */
+#ss-earth-frame {
+    filter: drop-shadow(0 -10px 10px rgba(60, 110, 210, 0.8));
+}
+
+@keyframes EarthAnimation {
+    100% {
+        top: calc(var(--ss-canvas-height) + 7rem);
+    }
+}

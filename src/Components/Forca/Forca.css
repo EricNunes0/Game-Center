@@ -1,0 +1,424 @@
+:root {
+    --forca-letters-main-div-width: 22rem;
+}
+
+#forca-page {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(90, 200, 220, 1);
+    background-image: linear-gradient(130deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+#forca-message-area {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transition: all 0.3s;
+}
+#forca-message-area.closed {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.forca-messages {
+    width: 15rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+}
+.forca-messages[class~="closed"] {
+    display: none;
+}
+.forca-messages[class~="light"] {
+    background-color: #fff;
+}
+.forca-messages[class~="dark"] {
+    background-color: #404040;
+}
+
+.forca-message-title-divs {
+    margin: 1rem 0;
+}
+
+.forca-message-titles[class~="light"] {
+    color: #000;
+}
+.forca-message-titles[class~="dark"] {
+    color: #fff;
+}
+
+.forca-answer-titles[class~="light"] {
+    color: #000;
+}
+.forca-answer-titles[class~="dark"] {
+    color: #fff;
+}
+
+.forca-answers[class~="light"] {
+    color: #000;
+}
+.forca-answers[class~="dark"] {
+    color: #fff;
+}
+
+#forca-repeat-button-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.forca-repeat-buttons {
+    width: 6rem;
+    height: 2.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+.forca-repeat-buttons:hover {
+    cursor: pointer;
+}
+.forca-repeat-buttons[class~="light"] {
+    background-color: #f0f0f0;
+    color: #000;
+}
+.forca-repeat-buttons[class~="dark"] {
+    background-color: #505050;
+    color: #fff;
+}
+
+#forca-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forca-divs {
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+.forca-divs[class~="light"] {
+    background-color: #fff;
+}
+.forca-divs[class~="dark"] {
+    background-color: #404040;
+}
+
+#forca-title-div {
+    margin-top: 1rem;
+}
+
+.forca-title[class~="light"] {
+    color: #000;
+}
+.forca-title[class~="dark"] {
+    color: #fff;
+}
+
+.forca-type[class~="light"] {
+    color: #000;
+}
+.forca-type[class~="dark"] {
+    color: #fff;
+}
+
+#type-span {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #f02020;
+}
+
+#forca-game-area {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#forca-svg {
+    pointer-events: none;
+}
+
+#forca-letters-main-div {
+    width: var(--forca-letters-main-div-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#forca-letter-blocks-div {
+    width: var(--forca-letters-main-div-width);
+}
+
+#letter-blocks-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.letter-blocks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+.letter-blocks[class~="light"] {
+    background-color: #d0d0d0;
+    color: #000;
+}
+.letter-blocks[class~="dark"] {
+    background-color: #606060;
+    color: #fff;
+}
+
+.empty-blocks {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.block-letters {
+    font-size: 12pt;
+}
+.block-letters[class~="light"] {
+    color: #000;
+}
+.block-letters[class~="dark"] {
+    color: #fff;
+}
+
+#forca-teclas-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #606060;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.forca-tecla-rows {
+    display: flex;
+    flex-direction: row;
+}
+
+.forca-tecla-buttons {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0px;
+    border-radius: 3px;
+    margin: 2px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px;
+    transition: all 0.3s;
+}
+.forca-tecla-buttons:hover {
+    cursor: pointer;
+    filter: brightness(0.95);
+}
+.forca-tecla-buttons[class~="light"] {
+    background-color: #f0f0f0;
+    color: #000;
+}
+.forca-tecla-buttons[class~="dark"] {
+    background-color: #505050;
+    color: #fff;
+}
+.forca-tecla-buttons[class~="disabled"] {
+    filter: brightness(0.6);
+}
+.forca-tecla-buttons[class~="disabled"]:hover {
+    cursor: not-allowed;
+}
+
+/* Div dos blocos das letras erradas */
+#forca-wrong-blocks-div {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Blocos das letras erradas */
+.wrong-blocks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 2px;
+}
+.wrong-blocks[class~="light"] {
+    background-color: #d0d0d0;
+    color: #000;
+}
+.wrong-blocks[class~="dark"] {
+    background-color: #606060;
+    color: #fff;
+}
+
+/* Div dos itens para usar */
+#forca-items-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+/* Alinhar texto com botões */
+.forca-items-divs-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+/* Divs das divs dos títulos escondidos */
+.forca-items-hidden-divs {
+    pointer-events: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: all 0.3s;
+}
+.forca-items-hidden-divs[class~="closed"] {
+    opacity: 0;
+}
+
+/* Divs dos títulos escondidos */
+.forca-items-hidden-title-divs {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    padding: 0 0.5rem;
+}
+
+/* Títulos dos itens */
+.forca-items-hidden-titles {
+    font-size: 12pt;
+    color: #fff;
+}
+
+/* Alinhar botões e contadores */
+.forca-items-stats-divs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Botões dos itens */
+.forca-items-buttons {
+    background-color: transparent;
+    width: 3rem;
+    height: 3rem;
+    border-width: 0px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 3px;
+    transition: all 0.3s;
+}
+.forca-items-buttons:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+.forca-items-buttons[class~="error"] {
+    animation-name: itemErrorAnimation;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+@keyframes itemErrorAnimation {
+    0%, 100% {
+        transform: rotate(0deg);
+        border: 1px solid #f02020;
+    }
+    10%, 50%, 90% {
+        transform: rotate(-8deg);
+    }
+    30%, 70% {
+        transform: rotate(8deg);
+    }
+}
+
+
+/* Objetos dos botões de itens */
+.forca-items-objects {
+    pointer-events: none;
+}
+
+.forca-items-counters {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 480px) {
+    #forca-area {
+        height: 100%;
+    }
+
+    .forca-divs {
+        width: 100%;
+    }
+
+    #forca-game-area {
+        flex-direction: column;
+    }
+
+    #forca-letters-main-div {
+        width: 100%;
+    }
+
+    #forca-letter-blocks-div {
+        width: 100%;
+    }
+
+    #forca-wrong-blocks-div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .forca-tecla-buttons {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .forca-tecla-buttons {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}

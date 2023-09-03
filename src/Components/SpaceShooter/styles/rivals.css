@@ -1,0 +1,62 @@
+/*
+*
+* Rivais
+*
+*/
+.ss-rivals {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    background-position: center;
+    background-size: 100% 100%;
+    transition: all 0.03s linear;
+    animation: SSplayerAnimationHover 1s ease-in-out infinite;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+.ss-rivals[class~="hit"] {
+    filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.5));
+}
+
+@keyframes rival0ToTop {
+    0% {
+        top: var(--ss-canvas-height);
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+/*
+*
+* Alertas dos rivais
+*
+*/
+.ss-rival-alerts {
+    position: absolute;
+    display: block;
+    background-size: 100% 100%;
+}
+
+
+/*
+*
+* Espadas dos rivais
+*
+*/
+.ss-rival-swords {
+    position: absolute;
+    display: block;
+    background-size: 100% 100%;
+}
+
+@keyframes RivalSwordRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

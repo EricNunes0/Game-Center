@@ -1,0 +1,6 @@
+/* Orbs */
+.ss-orbs {
+    position: absolute;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}

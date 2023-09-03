@@ -1,0 +1,71 @@
+{
+    "subtitles": [
+        "Sua central de entreterimento online!",
+        "Deixe a tristeza de lado, pois a vida é muito curta para não aproveitar a diversão de cada dia!",
+        "Que a diversão seja a ordem dos seus dias!",
+        "Que nunca te falte sabedoria para aproveitar ao máximo as alegrias da vida!",
+        "Que tal dar um \"play\" na felicidade?",
+        "Que tal dar um \"stop\" na negatividade?",
+        "Que tal dar um \"repeat\" na diversão?"
+    ],
+    "gamesAvailable": [
+        {
+            "id": 0,
+            "name": "Jogo da velha",
+            "icon": "Images/icons/img_tictactoe.png",
+            "description": "Um desafio de raciocínio e estratégia simples onde seu objetivo é colocar 3 símbolos em sequência para vencer!",
+            "image": "https://i.imgur.com/C7zTRsC.png",
+            "route": "/tictactoe",
+            "naipe": "Images/Naipes/img_Copas.png",
+            "cardNumber": 5,
+            "cardNumberColor": "red"
+        },
+        {
+            "id": 1,
+            "name": "Campo Minado",
+            "icon": "Images/icons/img_minesweeper.png",
+            "description": "Seu objetivo é marcar todos os quadrados vazios da grade. Mas cuidado para não marcar um quadrado com uma bomba!",
+            "image": "https://i.imgur.com/18nSHgM.png",
+            "route": "/minesweeper",
+            "naipe": "Images/Naipes/img_Espadas.png",
+            "cardNumber": 8,
+            "cardNumberColor": "black"
+        },
+        {
+            "id": 2,
+            "name": "Forca",
+            "icon": "Images/icons/img_forca.png",
+            "description": "Descubra qual é a palavra proposta, tendo como dica o número de letras e o tema ligado à palavra.",
+            "image": "https://i.imgur.com/c6xdwZ7.png",
+            "route": "/forca",
+            "naipe": "Images/Naipes/img_Ouro.png",
+            "cardNumber": 7,
+            "cardNumberColor": "red",
+            "disabled": false
+        },
+        {
+            "id": 3,
+            "name": "Space Shooter",
+            "icon": "Images/icons/img_spaceshooter.png",
+            "description": "Embarque em uma aventura pelo espaço sideral! Controle uma nave espacial e cumpra missões para avançar.",
+            "image": "https://i.imgur.com/7Ku7iFz.png",
+            "route": "/spaceshooter",
+            "naipe": "Images/Naipes/img_Paus.png",
+            "cardNumber": "A",
+            "cardNumberColor": "black",
+            "disabled": false
+        },
+        {
+            "id": 4,
+            "name": "Em breve...",
+            "icon": "https://i.imgur.com/2TqjPVH.png",
+            "description": "Novos jogos em breve...",
+            "image": "https://www.centralgatech.edu/wp-content/uploads/2017/08/programming.jpeg",
+            "route": "/",
+            "naipe": "Images/Naipes/img_Copas.png",
+            "cardNumber": "A",
+            "cardNumberColor": "red",
+            "disabled": true
+        }
+    ]
+}

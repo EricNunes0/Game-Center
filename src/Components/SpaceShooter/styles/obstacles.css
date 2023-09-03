@@ -1,0 +1,12 @@
+.ss-obstacles {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    background-size: 100% 100%;
+}
+
+@keyframes ObstaclesFall {
+    100% {
+        top: var(--ss-canvas-height);
+    }
+}

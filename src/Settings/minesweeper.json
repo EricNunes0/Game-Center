@@ -1,0 +1,76 @@
+{
+    "width": 9,
+    "height": 9,
+    "theme": "light",
+    "explodeBombHandler": false,
+    "freePlaces": [],
+    "bombsPlaces": [],
+    "bandeiras": 0,
+    "numbers1": [],
+    "numbers2": [],
+    "numbers3": [],
+    "numbers4": [],
+    "numbers5": [],
+    "numbers6": [],
+    "numbers7": [],
+    "minesweeperIcons": {
+        "red": "https://i.imgur.com/I6t0QEc.png",
+        "orange": "https://i.imgur.com/pStcnmI.png",
+        "yellow": "https://i.imgur.com/P2G3vuf.png",
+        "green": "https://i.imgur.com/VQS99da.png",
+        "blue": "https://i.imgur.com/NVUvaNt.png",
+        "pink": "https://i.imgur.com/Lu3sE4Q.png",
+        "gray": "https://i.imgur.com/rqragDE.png"
+    },
+    "minesweeperControls": [
+        {
+            "id": 0,
+            "icon": "https://i.imgur.com/xvQkPfI.png",
+            "title": "1 - 9",
+            "description": "Marcar as opções"
+        },
+        {
+            "id": 1,
+            "icon": "https://i.imgur.com/dvdf2Ar.png",
+            "title": "G",
+            "description": "Mudar modo de jogo"
+        },
+        {
+            "id": 2,
+            "icon": "https://i.imgur.com/LLubeKA.png",
+            "title": "R",
+            "description": "Reiniciar partida"
+        },
+        {
+            "id": 3,
+            "icon": "https://i.imgur.com/eY0AM0n.png",
+            "title": "C",
+            "description": "Limpar placar"
+        },
+        {
+            "id": 4,
+            "icon": "https://i.imgur.com/tBpEjw5.png",
+            "title": "T",
+            "description": "Alterar tema"
+        },
+        {
+            "id": 5,
+            "icon": "https://i.imgur.com/yHDXe85.png",
+            "title": "H",
+            "description": "Abrir/fechar menu de ajuda"
+        },
+        {
+            "id": 6,
+            "icon": "https://i.imgur.com/9lR8qPo.png",
+            "title": "M",
+            "description": "Ativar/desativar efeitos sonoros"
+        },
+        {
+            "id": 7,
+            "icon": "https://i.imgur.com/Zi8iXGD.png",
+            "title": "P",
+            "description": "Abrir/fechar menu de customização"
+        }
+    ],
+    "squaresPos": 0
+}

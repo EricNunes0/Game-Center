@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id = "gift-0-svg" viewBox="168.796 169.708 116.787 132.299" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="227.19" y1="186.131" x2="227.19" y2="300.182" id="gradient-0" gradientTransform="matrix(1, 0, 0, 0.968, 0, 9.605832)">
+      <stop offset="0" style="stop-color: rgba(226, 62, 62, 1)"/>
+      <stop offset="1" style="stop-color: rgba(162, 24, 24, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="227.19" y1="211.679" x2="227.19" y2="299.271" id="gradient-1">
+      <stop offset="0" style="stop-color: rgba(255, 223, 109, 1)"/>
+      <stop offset="1" style="stop-color: rgba(255, 201, 7, 1)"/>
+    </linearGradient>
+  </defs>
+  <rect x="175.183" y="211.679" width="104.015" height="87.592" style="stroke: rgb(245, 168, 35); fill: url(#gradient-1); paint-order: fill; fill-opacity: 0.63;" rx="6.387" ry="6.387"/>
+  <rect x="171.533" y="197.079" width="111.314" height="19.161" style="fill: rgb(255, 223, 109); stroke: rgb(245, 168, 35);" rx="3.65" ry="3.65"/>
+  <rect x="176.095" y="217.152" width="102.19" height="10.949" style="stroke: rgb(156, 130, 0); stroke-width: 0px; fill: rgb(244, 182, 76);"/>
+  <rect x="215.329" y="189.781" width="23.722" height="110.401" style="stroke: rgb(0, 0, 0); stroke-width: 0px; paint-order: fill; fill: url(#gradient-0); fill-rule: nonzero;" rx="4.562" ry="4.562"/>
+  <path d="M 186.675 221.564 Q 189.401 211.278 194.861 221.564 L 209.575 249.284 Q 215.035 259.57 206.849 259.57 L 184.789 259.57 Q 176.603 259.57 179.329 249.284 Z" style="stroke: rgb(0, 0, 0); fill: rgb(226, 62, 62); stroke-width: 0px;" transform="matrix(-0.616427, 0.787412, -0.922638, -0.443692, 539.007019, 144.980453)" bx:shape="triangle 176.603 211.278 38.432 48.292 0.333 0.213 1@d95c224b"/>
+  <path d="M -166.531 -200.992 Q -163.805 -211.278 -158.345 -200.992 L -143.631 -173.272 Q -138.171 -162.986 -146.357 -162.986 L -168.417 -162.986 Q -176.603 -162.986 -173.877 -173.272 Z" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(226, 62, 62);" transform="matrix(0.616427, 0.787412, 0.922638, -0.443692, 522.430664, 235.614433)" bx:shape="triangle -176.603 -211.278 38.432 48.292 0.333 0.213 1@2a57c583"/>
+</svg>

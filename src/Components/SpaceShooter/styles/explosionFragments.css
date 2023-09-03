@@ -1,0 +1,59 @@
+:root {
+    --ss-explosion-fragment-translate: 50px;
+}
+
+@keyframes ExplosionFragment0 {
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--ss-explosion-fragment-translate) * -1), calc(var(--ss-explosion-fragment-translate) * -1));
+    }
+}
+
+@keyframes ExplosionFragment1 {
+    100% {
+        opacity: 0;
+        transform: translate(0px, calc(var(--ss-explosion-fragment-translate) * -1 - 20px));
+    }
+}
+
+@keyframes ExplosionFragment2 {
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--ss-explosion-fragment-translate) * 1), calc(var(--ss-explosion-fragment-translate) * -1));
+    }
+}
+
+@keyframes ExplosionFragment3 {
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--ss-explosion-fragment-translate) * -1 - 20px), 0px);
+    }
+}
+
+@keyframes ExplosionFragment4 {
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--ss-explosion-fragment-translate) * 1 + 20px), 0px);
+    }
+}
+
+@keyframes ExplosionFragment5 {
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--ss-explosion-fragment-translate) * -1), calc(var(--ss-explosion-fragment-translate) * 1));
+    }
+}
+
+@keyframes ExplosionFragment6 {
+    100% {
+        opacity: 0;
+        transform: translate(0px, calc(var(--ss-explosion-fragment-translate) * 1 + 20px));
+    }
+}
+
+@keyframes ExplosionFragment7 {
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--ss-explosion-fragment-translate) * 1), calc(var(--ss-explosion-fragment-translate) * 1));
+    }
+}

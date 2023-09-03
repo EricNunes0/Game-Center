@@ -1,0 +1,52 @@
+{
+    "controls": [
+        {
+            "id": 0,
+            "icon": "https://i.imgur.com/xvQkPfI.png",
+            "title": "1 - 9",
+            "description": "Marcar as opções"
+        },
+        {
+            "id": 1,
+            "icon": "https://i.imgur.com/dvdf2Ar.png",
+            "title": "G",
+            "description": "Mudar modo de jogo"
+        },
+        {
+            "id": 2,
+            "icon": "https://i.imgur.com/LLubeKA.png",
+            "title": "R",
+            "description": "Reiniciar partida"
+        },
+        {
+            "id": 3,
+            "icon": "https://i.imgur.com/eY0AM0n.png",
+            "title": "C",
+            "description": "Limpar placar"
+        },
+        {
+            "id": 4,
+            "icon": "https://i.imgur.com/tBpEjw5.png",
+            "title": "T",
+            "description": "Alterar tema"
+        },
+        {
+            "id": 5,
+            "icon": "https://i.imgur.com/yHDXe85.png",
+            "title": "H",
+            "description": "Abrir/fechar menu de ajuda"
+        },
+        {
+            "id": 6,
+            "icon": "https://i.imgur.com/9lR8qPo.png",
+            "title": "M",
+            "description": "Ativar/desativar efeitos sonoros"
+        },
+        {
+            "id": 7,
+            "icon": "https://i.imgur.com/Zi8iXGD.png",
+            "title": "P",
+            "description": "Abrir/fechar menu de customização"
+        }
+    ]
+}

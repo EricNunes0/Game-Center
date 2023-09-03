@@ -1,0 +1,37 @@
+:root {
+    --ss-boss-0-width: 120px;
+    --ss-boss-0-height: 120px;
+    --ss-boss-shot-0-width: 1.5rem;
+    --ss-boss-shot-0-height: 1.5rem;
+}
+
+.ss-enemies.boss {
+    position: absolute;
+    background-size: 100% 100%;
+}
+/* Tiro dos chefes */
+.ss-boss-shots {
+    position: absolute;
+    display: block;
+    background-size: 100% 100%;
+    /*border-radius: 50%;*/
+}
+
+/* Movimento do chefe 0 (movimento 0) */
+@keyframes SSboss0Move0 {
+    0%, 100% {
+        left: calc(calc(var(--ss-canvas-width) - var(--ss-boss-0-width)) / 2);
+    }
+    50% {
+        left: calc(var(--ss-canvas-width) - var(--ss-boss-0-width));
+    }
+}
+/* Movimento do chefe 0 (movimento 1) */
+@keyframes SSboss0Move1 {
+    0%, 100% {
+        left: calc(calc(var(--ss-canvas-width) - var(--ss-boss-0-width)) / 2);
+    }
+    50% {
+        left: 0px;
+    }
+}

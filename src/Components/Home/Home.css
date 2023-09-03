@@ -1,0 +1,648 @@
+:root {
+    --home-container-height: 100vh;
+    --home-games-height: 100vh;
+    --bg--color: rgba(0, 0, 255, 1);
+    --typing-speed: 4s;
+    --typing-characters: 11;
+    --card-background-url: url("https://i.pinimg.com/originals/f3/d2/de/f3d2debb0a132dab24aee56a9524d075.png");
+    --card-width: 200px;
+    --card-height: 300px;
+    --card-transition: 0.5s; /* Duração da transição das cartas em segundos */
+    --play-game-button-width: 40px; /* Largura do botão de jogar nas cartas */
+    --play-game-button-height: 40px; /* Altura do botão de jogar nas cartas */
+}
+
+#home-container {
+    width: 100%;
+    height: var(--home-container-height);
+    background-color: #602060;
+    background-image: url("../../../public/Images/img_SpaceBackgroundDarker.png");
+    background-position-x: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section-spans {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--home-starts-color-hex);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(208, 128, 208 , 0.1), 0 0 0 5px rgba(208, 128, 208, 0.1), 0 0 12px rgba(255, 255, 255, 0.9);
+    animation: sectionSpansAnimation 3s linear infinite;
+    transition: all 0.3s;
+}
+
+.section-spans::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--home-starts-color-hex), transparent);
+}
+
+@keyframes sectionSpansAnimation {
+    0% {
+        transform: rotate(315deg) translateX(0);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(315deg) translateX(-700px);
+        opacity: 0;
+    }
+}
+
+.section-spans:nth-child(1) {
+    top: 150px;
+    right: 300px;
+    left: initial;
+    animation-delay: 0;
+    animation-duration: 1.5s;
+}
+
+.section-spans:nth-child(2) {
+    top: 100px;
+    right: 800px;
+    left: initial;
+    animation-delay: -0.2s;
+    animation-duration: 3s;
+}
+
+.section-spans:nth-child(3) {
+    top: -70px;
+    right: 320px;
+    left: initial;
+    animation-delay: 0.4s;
+    animation-duration: 2s;
+}
+
+.section-spans:nth-child(4) {
+    top: 0px;
+    right: 290px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 6s;
+}
+
+.section-spans:nth-child(5) {
+    top: 0px;
+    right: 890px;
+    left: initial;
+    animation-delay: -0.2s;
+    animation-duration: 2s;
+}
+
+.section-spans:nth-child(6) {
+    top: 10px;
+    right: 1100px;
+    left: initial;
+    animation-delay: 0s;
+    animation-duration: 4s;
+}
+
+.section-spans:nth-child(7) {
+    top: 10px;
+    right: 500px;
+    left: initial;
+    animation-delay: 0s;
+    animation-duration: 7s;
+}
+
+.section-spans:hover {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    animation-play-state: paused;
+}
+
+#home-main-container {
+    width: 100%;
+    height: 100%;
+}
+
+#home-main-flex {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+
+#subtitle-div {
+    width: 80%;
+    margin: auto;
+}
+
+#home-title-div {
+    transform: scale(0.95);
+}
+
+@media screen and (max-width: 480px) {
+    /*#home-title-div {
+        transform: scale(0.6);
+    }*/
+}
+
+#home-title {
+    width: max-content;
+    position: relative;
+    font-size: clamp(1rem, 3vw + 3rem, 2rem);
+    font-family: monospace;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(180deg, #ff87c5, #f36eff);
+    color: #d7639f;
+    margin: auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
+}
+
+#home-title::before, #home-title::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#home-title::before {
+    background: -webkit-linear-gradient(270deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+    border-radius: 5px;
+    box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 5px;
+    animation: typingAnimation var(--typing-speed) steps(var(--typing-characters)) forwards;
+}
+
+#home-title::after {
+    width: 0.05em;
+    background: white;
+    animation: 
+        typingAnimation var(--typing-speed) steps(var(--typing-characters)) forwards,
+        blink calc(var(--typing-speed) / var(--typing-characters)) steps(var(--typing-characters)) infinite;
+}
+
+@keyframes typingAnimation {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+#home-subtitle-div {
+    margin: 10px 0;
+}
+
+#home-subtitle {
+    position: relative;
+    color: #c2afce;
+    font-size: clamp(1rem, 1vw + 0.2rem, 4rem);
+    font-family: monospace;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 1) 0px 0px 8px;
+    margin: auto;
+}
+
+#home-main-button-div {
+    display: grid;
+    place-content: center;
+}
+
+#home-button-div {
+    margin: 10px 0;
+}
+
+#home-button {
+    color: #fff;
+    font-size: 12pt;
+    width: calc(10vw + 50px);
+    height: calc(5vh + 10px);
+    background: linear-gradient(120deg, #cc48c5 0%, #cc48a5 50%, #cc48a5 70%, #cc2f5e 100%);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-width: 0px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+    transition: all 0.3s;
+}
+
+#home-button:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+/* Área das setas */
+#home-arrow-container {
+    width: 100%;
+    position: absolute;
+    display: grid;
+    place-content: center;
+    bottom: 0px;
+}
+
+.home-arrows-images {
+    width: 40px;
+    height: 25px;
+    transform: rotate(180deg);
+    animation-name: homeArrowsImagesAnimation;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1.01);
+    animation-iteration-count: infinite;
+}
+
+.home-arrows-images#home-arrow-1 {
+    animation-delay: 0.1s;
+}
+
+@keyframes homeArrowsImagesAnimation {
+    0%, 100% {
+        transform: rotate(180deg) translateY(10px);
+    }
+    50% {
+        transform: rotate(180deg) translateY(0px);
+    }
+}
+
+/* Aba de jogos */
+#home-games-container {
+    width: 100%;
+    background-color: rgba(48, 16, 48, 1);
+}
+
+#home-games-main-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-games-area {
+    width: 90%;
+    height: 90%;
+    margin: 25px 0;
+    background-color: rgba(100, 30, 100, 0);
+    border-radius: 10px;
+}
+
+#games-area-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#games-area-title-div {
+    margin: 30px 0 10px 0;
+}
+
+#games-area-title {
+    font-size: 24pt;
+    font-weight: bolder;
+    background: linear-gradient(180deg, #ff87c5, #f36eff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
+}
+
+#games-area-description {
+    font-size: 12pt;
+    font-weight: bolder;
+    background: linear-gradient(180deg, #ffa4d3, #f58dff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
+}
+
+#available-games-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#available-games-divs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /*gap: 30px;*/
+}
+
+/* Divs dos jogos disponíveis */
+.games-available-divs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: var(--card-width);
+    height: var(--card-height);
+    background-image: linear-gradient(180deg, #402040, #301030);
+    border-radius: 10px;
+    margin: 30px 30px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
+    transition: all 0.3s;
+}
+
+.games-available-divs:hover {
+    cursor: pointer;
+    box-shadow: rgba(208, 128, 208 , 1) 0px 0px 15px;
+    transform: scale(1.01);
+}
+
+/* Sistema de virar cartas */
+.cards {
+    position: absolute;
+    width: var(--card-width);
+    height: var(--card-height);
+    border-width: 0px;
+    border-radius: 10px;
+}
+
+.cards:hover {
+    cursor: pointer;
+}
+
+.cards.forwards {
+    background: transparent;
+    z-index: 1;
+}
+
+.cards.turning-forwards {
+    background-image: var(--card-background-url);
+    background-size: 100% 100%;
+    background: transparent;
+    animation-name: cardBackwardsToForwards;
+    animation-duration: calc(var(--card-transition) / 2);
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+.cards.turning-backwards {
+    background-image: var(--card-background-url);
+    background-size: 100% 100%;
+    background: transparent;
+    animation-name: cardForwardsToBackwards;
+    animation-delay: calc(var(--card-transition) / 2);
+    animation-duration: calc(var(--card-transition) / 2);
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+.cards.backwards {
+    background-image: var(--card-background-url);
+    background-size: 100% 100%;
+}
+
+@keyframes cardBackwardsToForwards {
+    0% {
+        background-image: var(--card-background-url);
+        background-size: 100% 100%;
+    }
+
+    100% {
+        background-image: var(--card-background-url);
+        background-size: 100% 100%;
+        transform: rotate3d(0, 1, 0, 90deg);
+        -webkit-transform: rotate3d(0, 1, 0, 90deg);
+    }
+}
+
+@keyframes cardForwardsToBackwards {
+    0% {
+        background-image: var(--card-background-url);
+        background-size: 100% 100%;
+        transform: rotate3d(0, 1, 0, 90deg);
+        -webkit-transform: rotate3d(0, 1, 0, 90deg);
+    }
+
+    100% {
+        background-image: var(--card-background-url);
+        background-size: 100% 100%;
+        transform: rotate3d(0, 1, 0, 0deg);
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+    }
+}
+
+.games-available-headers {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.games-available-headers[class~="opened"] {
+    display: block;
+}
+
+.games-available-headers[class~="opening"] {
+    -webkit-transform: rotate3d(0, 1, 0, 90deg);
+    transform: rotate3d(0, 1, 0, 90deg); 
+    animation-name: headerBackwardsToForwardsAnimation;
+    animation-delay: calc(var(--card-transition) / 2);
+    animation-duration: calc(var(--card-transition) / 2);
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+.games-available-headers[class~="closing"] {
+    -webkit-transform: rotate3d(0, 1, 0, 0deg);
+    transform: rotate3d(0, 1, 0, 0deg); 
+    animation-name: headerForwardsToBackwardsAnimation;
+    animation-duration: calc(var(--card-transition) / 2);
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    opacity: 0;
+}
+
+.games-available-headers[class~="closed"] {
+    display: none;
+}
+
+
+@keyframes headerBackwardsToForwardsAnimation {
+    to {
+        display: none;
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg); 
+    }
+}
+
+@keyframes headerForwardsToBackwardsAnimation {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: rotate3d(0, 1, 0, 90deg);
+        transform: rotate3d(0, 1, 0, 90deg); 
+    }
+}
+
+/* Dívs dos ícones do naipe no topo */
+.card-icon-top-divs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.card-icon-top-area {
+    width: 90%;
+}
+
+.card-icon-top-image-divs {
+    width: 100%;
+}
+
+/* Ícones do naipe no topo e abaixo */
+.card-icon-top, .card-icon-bottom {
+    width: 30px;
+    height: 30px;
+}
+
+/* Divs dos números das cartas */
+.card-icon-top-number-divs {
+    width: 27px;
+}
+
+/* Dívs dos ícones do naipe em baixo */
+.card-icon-bottom-divs {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 76%;
+    right: 3%;
+    transform: rotate(180deg);
+}
+
+/* Números das cartas */
+.card-numbers {
+    font-size: 16pt;
+    text-align: center;
+}
+
+.card-numbers[class~="red"] {
+    color: #f02020;
+}
+
+.card-numbers[class~="black"] {
+    color: #000;
+}
+
+/* Alinhar informações das cartas */
+.games-available-informations-flex {
+    margin: 30% 10px 0 10px;
+}
+
+.games-headers-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Nomes dos jogos  */
+.game-names {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+/* Ícones dos jogos */
+.game-available-icons {
+    width: 25px;
+    height: 25px;
+}
+
+.game-images-divs {
+    width: 100%;
+    height: calc(var(--card-height) / 3.5);
+}
+
+.game-available-images {
+    width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+
+.game-description-divs {
+    margin: 10px 15px 10px 15px;
+    width: 80%;
+}
+
+.game-available-descriptions {
+    font-size: 8pt;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+
+/* Div do botão de jogar */
+.game-play-button-divs {
+    width: 90%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button-links {
+    display: block;
+    width: var(--play-game-button-width);
+    height: var(--play-game-button-height);
+    border-radius: 50%;
+}
+
+.play-button-links.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: invert(0.25)
+}
+
+.play-buttons {
+    width: var(--play-game-button-width);
+    height: var(--play-game-button-height);
+    border-radius: 50%;
+    border-width: 0px;
+    transition: all 0.3s;
+}
+
+.play-buttons:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+}
+
+.play-buttons-images {
+    width: var(--play-game-button-width);
+    height: var(--play-game-button-height);
+    border-radius: 50%;
+}

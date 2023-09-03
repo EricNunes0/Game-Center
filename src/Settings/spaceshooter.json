@@ -1,0 +1,680 @@
+{
+    "icon": "https://i.imgur.com/LiQE5Qe.png",
+    "freeze": false,
+    "freezeMovesOnly": false,
+    "keysActive": false,
+    "currentMission": 0,
+    "playersActive": 1,
+    "enemies": {
+        "0": {
+            "id": 0,
+            "ship": "https://i.imgur.com/tHXMxn4.png",
+            "animations": ["SSenemie0Move0", "SSenemie0Move1", "SSenemie0Move2"],
+            "width": 40,
+            "height": 48,
+            "top": 100,
+            "shots": [
+                {
+                    "id": 0,
+                    "shotImage": "Images/Space/shots/enemy-shot(0).gif",
+                    "shotWidth": 15,
+                    "shotHeight": 30,
+                    "relativeTop": 0,
+                    "relativeLeft": 0,
+                    "animationNames": ["Enemy0Shot0"],
+                    "animationTiming": "linear"
+                }
+            ]
+        },
+        "1": {
+            "id": 1,
+            "ship": "https://i.imgur.com/JJmSpuc.png",
+            "animations": ["SSenemie1Move0", "SSenemie1Move1"],
+            "width": 40,
+            "height": 48,
+            "top": 0
+        },
+        "2": {
+            "id": 2,
+            "ship": "Images/Space/enemies/enemy(2).png",
+            "animations": ["SSenemie2Move0"],
+            "width": 45,
+            "height": 54,
+            "top": 100,
+            "shots": [
+                {
+                    "id": 0,
+                    "shotImage": "Images/Space/shots/shot(2).png",
+                    "shotWidth": 8,
+                    "shotHeight": 40,
+                    "relativeTop": 40,
+                    "relativeLeft": -16.5,
+                    "animationNames": ["Enemy2Shot0"],
+                    "animationTiming": "linear"
+                },
+                {
+                    "id": 1,
+                    "shotImage": "Images/Space/shots/shot(2).png",
+                    "shotWidth": 8,
+                    "shotHeight": 40,
+                    "relativeTop": 40,
+                    "relativeLeft": 16.5,
+                    "animationNames": ["Enemy2Shot0"],
+                    "animationTiming": "linear"
+                }
+            ]
+        },
+        "3": {
+            "id": 3,
+            "ship": "Images/Space/enemies/enemy(3).gif",
+            "animations": ["SSenemie3Move0"],
+            "width": 61.5,
+            "height": 60,
+            "top": 0,
+            "defense": {
+                "active": true,
+                "delay": 3,
+                "duration": 1
+            },
+            "permanent": true
+        }
+    },
+    "bosses": {
+        "0": {
+            "ship": "Images/Space/boss(0).gif",
+            "width": 120,
+            "height": 120,
+            "lifes": 20,
+            "lifesRecover": 20,
+            "shotImage": "Images/Space/bossShot(0).gif",
+            "shotWidth": 30,
+            "shotHeight": 50,
+            "animations": ["SSboss0Move0", "SSboss0Move1"],
+            "animationTiming": "ease-in-out"
+        }
+    },
+    "rivals": {
+        "0": {
+            "ship": "Images/Space/players/player(1).png",
+            "width": 40,
+            "height": 48,
+            "left": 140,
+            "lifes": 3,
+            "lifesMax": 3,
+            "shotImage": "Images/Space/bossShot(0).gif",
+            "shotWidth": 30,
+            "shotHeight": 50,
+            "sword": {
+                "delay": 1.5,
+                "running": false,
+                "duration": 0.3,
+                "top": -35,
+                "left": 17,
+                "width": 5,
+                "height": 50,
+                "animationNames": ["RivalSwordRotate"]
+            }
+        }
+    },
+    "obstacles": {
+        "0": {
+            "id": 0,
+            "backgroundImage": "Images/Space/obstacles/rock(0).png",
+            "width": 81.25,
+            "height": 87.5,
+            "animationNames": ["ObstaclesFall"],
+            "animationDuration": 1.7,
+            "delay": {
+                "duration": 0.5,
+                "meters": 10,
+                "y": 100
+            }
+        }
+    },
+    "guns": {
+        "0": {
+            "width": 20,
+            "height": 20,
+            "background": "https://i.imgur.com/eiGYKUG.gif",
+            "shotsUse": 1,
+            "recharge": 5,
+            "time": 1.5,
+            "shotRecharge": 20,
+            "dropWidth": 20,
+            "dropHeight": 20,
+            "dropDuration": 5,
+            "animations": ["Gun0Move0"],
+            "animationTiming": "linear"
+        },
+        "1": {
+            "width": 20,
+            "height": 20,
+            "background": "https://i.imgur.com/KnjqFhx.gif",
+            "shotsUse": 1,
+            "recharge": 5,
+            "time": 2,
+            "shotRecharge": 20,
+            "dropWidth": 20,
+            "dropHeight": 20,
+            "dropDuration": 5,
+            "dropAnimationName": "Weapon1Drop",
+            "animations": ["Gun1Move0"],
+            "animationTiming": "linear"
+        }
+    },
+    "players": {
+        "0": {
+            "color": "#fff",
+            "ship": "Images/Space/players/player(0).png",
+            "width": 40,
+            "height": 48,
+            "lifes": 3,
+            "lifesMax": 3,
+            "kills": 0,
+            "orbs": 0,
+            "bossKills": 0,
+            "points": 0,
+            "bonus": 0,
+            "gun": 0,
+            "shots": 20,
+            "shotDelay": 0.5,
+            "shotStop": false,
+            "time": 0,
+            "meters": 0,
+            "controls": {
+                "movePlayerLeft": ["ArrowLeft"],
+                "movePlayerRight": ["ArrowRight"],
+                "playerShot": ["Space"]
+            }
+        },
+        "1": {
+            "color": "#fff",
+            "ship": "Images/Space/players/player(1).png",
+            "width": 40,
+            "height": 48,
+            "lifes": 3,
+            "lifesMax": 3,
+            "kills": 0,
+            "orbs": 0,
+            "bossKills": 0,
+            "points": 0,
+            "bonus": 0,
+            "gun": 0,
+            "shots": 20,
+            "shotDelay": 0.5,
+            "shotStop": false,
+            "time": 0,
+            "meters": 0,
+            "controls": {
+                "movePlayerLeft": ["KeyA"],
+                "movePlayerRight": ["KeyD"],
+                "playerShot": ["KeyS"]
+            }
+        }
+    },
+    "missions": [
+        {
+            "id": 0,
+            "categorie": "K",
+            "cenary": "https://i.imgur.com/j4QpT2u.png",
+            "name": "Terra",
+            "description": "Derrote 10 inimigos",
+            "song": "../../Audios/space/snd_level(0).mp3",
+            "kills": 10,
+            "enemyInterval": 5,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 1750,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 3250,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 5000,
+                    "collected": false
+                }
+            },
+            "enemies": [0],
+            "locked": false,
+            "isRunning": false
+        },
+        {
+            "id": 1,
+            "categorie": "K",
+            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "name": "Nível 1",
+            "description": "Derrote 15 inimigos",
+            "song": "../../Audios/space/snd_level(1).mp3",
+            "kills": 15,
+            "enemyInterval": 4,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 2000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 4000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 6000,
+                    "collected": false
+                }
+            },
+            "enemies": [0],
+            "backgrounds": [
+                {
+                    "id": "ss-earth-frame",
+                    "image": "https://media.discordapp.net/attachments/802540276689272843/1126990342420443176/1688756182621.png",
+                    "animationName": "EarthAnimation",
+                    "timeSpawn": 0,
+                    "duration": 10,
+                    "top": "calc(var(--ss-canvas-height) - 7rem)",
+                    "width": "var(--ss-canvas-width)",
+                    "height": "8rem"
+                }
+            ],
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 2,
+            "categorie": "K",
+            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "name": "Nível 2",
+            "description": "Derrote 20 inimigos",
+            "song": "../../Audios/space/snd_level(1).mp3",
+            "kills": 20,
+            "enemyInterval": 3,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 2250,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 4500,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 6750,
+                    "collected": false
+                }
+            },
+            "enemies": [0, 1],
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 3,
+            "categorie": "C",
+            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "name": "Nível 3",
+            "description": "Colete 5 orbs",
+            "song": "../../Audios/space/snd_level(1).mp3",
+            "orbs": 5,
+            "orbInterval": 10,
+            "enemyInterval": 2.5,
+            "time": 150,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 2000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 4000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 6000,
+                    "collected": false
+                }
+            },
+            "enemies": [1],
+            "cenarySpeed": 4,
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 4,
+            "categorie": "K",
+            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "name": "Nível 4",
+            "description": "Derrote 25 inimigos",
+            "song": "../../Audios/space/snd_level(1).mp3",
+            "kills": 25,
+            "enemyInterval": 2,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 2150,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 5250,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 7000,
+                    "collected": false
+                }
+            },
+            "enemies": [0, 1],
+            "cenarySpeed": 3.5,
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 5,
+            "categorie": "B",
+            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "name": "Nível 5",
+            "description": "Derrote o chefe",
+            "song": "../../Audios/space/snd_boss(0).mp3",
+            "kills": 0,
+            "enemyInterval": 3,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 1000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 2000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 3000,
+                    "collected": false
+                }
+            },
+            "bosses": [0],
+            "cenarySpeed": 3,
+            "endCutscene": {
+                "id": 0,
+                "duration": 20
+            },
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 6,
+            "categorie": "K",
+            "cenary": "Images/Space/level(2).png",
+            "name": "Nível 6",
+            "description": "Derrote 30 inimigos",
+            "song": "../../Audios/space/snd_level(2).mp3",
+            "kills": 30,
+            "enemyInterval": 3,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 3000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 6000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 9000,
+                    "collected": false
+                }
+            },
+            "enemies": [2],
+            "cenarySpeed": 3.5,
+            "weapons": [1],
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 7,
+            "categorie": "K",
+            "cenary": "Images/Space/level(2).png",
+            "name": "Nível 7",
+            "description": "Derrote 35 inimigos",
+            "song": "../../Audios/space/snd_level(2).mp3",
+            "kills": 35,
+            "enemyInterval": 2.5,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 3300,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 6700,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 10000,
+                    "collected": false
+                }
+            },
+            "enemies": [0, 2],
+            "cenarySpeed": 3.25,
+            "weapons": [1],
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 8,
+            "categorie": "K",
+            "cenary": "Images/Space/level(2).png",
+            "name": "Nível 8",
+            "description": "Derrote 40 inimigos",
+            "song": "../../Audios/space/snd_level(2).mp3",
+            "kills": 40,
+            "enemyInterval": 2,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 4000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 8000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 12000,
+                    "collected": false
+                }
+            },
+            "enemies": [0, 1, 2],
+            "cenarySpeed": 2.75,
+            "weapons": [1],
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 9,
+            "categorie": "C",
+            "cenary": "Images/Space/level(2).png",
+            "name": "Nível 9",
+            "description": "Colete 10 orbs",
+            "song": "../../Audios/space/snd_level(2).mp3",
+            "orbs": 10,
+            "orbInterval": 10,
+            "enemyInterval": 2,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 4000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 8000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 12000,
+                    "collected": false
+                }
+            },
+            "enemies": [1, 2],
+            "cenarySpeed": 2.5,
+            "weapons": [1],
+            "endCutscene": {
+                "id": 1,
+                "duration": 12
+            },
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 10,
+            "categorie": "R",
+            "cenary": "Images/Space/level(2).png",
+            "name": "Rival",
+            "description": "Vença a corrida",
+            "song": "../../Audios/space/snd_boss(1).mp3",
+            "enemyInterval": 2,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 1250,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 2750,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 4000,
+                    "collected": false
+                }
+            },
+            "cenarySpeed": 1.5,
+            "rivals": [0],
+            "obstacles": [0],
+            "obstacleInterval": 1.75,
+            "raceMeters": 400,
+            "raceSpeed": 5,
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 11,
+            "categorie": "K",
+            "cenary": "Images/Space/level(3).png",
+            "name": "Nível 11",
+            "description": "Derrote 45 inimigos",
+            "song": "../../Audios/space/snd_level(3).mp3",
+            "kills": 45,
+            "enemyInterval": 2,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 4000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 8000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 12000,
+                    "collected": false
+                }
+            },
+            "enemies": [0, 1, 2],
+            "cenarySpeed": 2.75,
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 12,
+            "categorie": "K",
+            "cenary": "Images/Space/level(3).png",
+            "name": "Nível 12",
+            "description": "Derrote 10 inimigos",
+            "song": "../../Audios/space/snd_level(3).mp3",
+            "kills": 10,
+            "enemyInterval": 4,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 2250,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 3750,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 5000,
+                    "collected": false
+                }
+            },
+            "enemies": [3],
+            "maxEnemies": 10,
+            "cenarySpeed": 2.7,
+            "locked": true,
+            "isRunning": false
+        },
+        {
+            "id": 13,
+            "categorie": "C",
+            "cenary": "Images/Space/level(3).png",
+            "name": "Nível 13",
+            "description": "Colete 15 orbs",
+            "song": "../../Audios/space/snd_level(3).mp3",
+            "orbs": 15,
+            "orbInterval": 10,
+            "enemyInterval": 2,
+            "time": 180,
+            "completed": false,
+            "stars": {
+                "0": {
+                    "pointsRequired": 4000,
+                    "collected": false
+                },
+                "1": {
+                    "pointsRequired": 8000,
+                    "collected": false
+                },
+                "2": {
+                    "pointsRequired": 12000,
+                    "collected": false
+                }
+            },
+            "enemies": [0, 3],
+            "cenarySpeed": 2.5,
+            "weapons": [1],
+            "locked": true,
+            "isRunning": false
+        }
+    ],
+    "missionCategories": {
+        "K": {
+            "icon": "https://i.imgur.com/YMqMhvJ.png"
+        },
+        "C": {
+            "icon": "https://i.imgur.com/xlAX0sg.png"
+        },
+        "B": {
+            "icon": "https://i.imgur.com/TkWEnrx.png"
+        },
+        "R": {
+            "icon": "https://i.imgur.com/KkUabLH.png"
+        }
+    }
+}

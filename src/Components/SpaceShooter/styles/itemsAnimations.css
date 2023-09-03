@@ -1,0 +1,26 @@
+.ss-weapon-drops {
+    position: absolute;
+    background-size: 100% 100%;
+}
+
+@keyframes GunRechargeFall {
+    100% {
+        top: calc(var(--ss-canvas-height));
+    }
+}
+
+/* Drop da arma 1 */
+@keyframes Weapon1Drop {
+    /*0%, 100% {
+        transform: translateX(0px);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }*/
+    100% {
+        top: calc(var(--ss-canvas-height));
+    }
+}

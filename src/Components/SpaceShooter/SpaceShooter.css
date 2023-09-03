@@ -1,0 +1,1621 @@
+@font-face {
+    font-family: "Space";
+    src: url("../../../public/Fonts/font_Space.ttf");
+}
+
+:root {
+    --ss-page-background-color: rgba(10, 20, 40, 1);
+    --ss-area-border-radius: 5px;
+    --ss-canvas-width: 20rem; /* 20rem */
+    --ss-canvas-height: 35rem; /* 35rem */
+    --ss-lifes-width: 1rem; /* Largura das vidas */
+    --ss-lifes-height: 1rem; /* Altura das vidas */
+    --ss-weapon-shots-width: 1.5rem; /* Largura da área de balas */
+    --ss-weapon-shots-height: 1rem; /* Altura da área de balas */
+    --ss-weapon-recharge-width: 4rem; /* Largura da área de recarregar arma */
+    --ss-weapon-recharge-height: 1rem; /* Altura da área de recarregar arma */
+    --ss-points-width: 5rem; /* Largura da área de pontuação */
+    --ss-points-height: 1.5rem; /* Altura da área da pontuação */
+    --ss-shot-0-color: rgb(100, 170, 255); /* Cor do tiro 0 */
+    --ss-shoot-normal-duration: 1.01s;
+    /* Hud */
+    --ss-shot-item-0-width: 1.5rem; /* Largura do item de recarga 0 */
+    --ss-shot-item-0-height: 1.5rem; /* Altura do item de recarga 0 */
+    --ss-restart-div-width: calc(var(--ss-canvas-width) / 2); /* Largura da área de reiniciar jogo */
+    --ss-restart-div-height: 3rem; /* Altura da área de reiniciar jogo */
+}
+
+#space-shooter-page {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: var(--ss-page-background-color);
+    background-image: linear-gradient(180deg, #000020, #202040);
+    position: fixed; /* Remover caso dê problema */
+}
+
+/* Cenário de fundo do jogo */
+#ss-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Svgs dos triângulos */
+.ss-background-triangles {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    width: 8px;
+    height: 10px;
+    background-size: 100% 100%;
+    opacity: 0;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+    animation-name: BackgroundTriangles;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transition: all 0.3s;
+    user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+@keyframes BackgroundTriangles {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#ss-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ss-area {
+    background-color: #fff;
+    border-radius: var(--ss-area-border-radius);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+
+/* Canvas do space shooter */
+#space-shooter-canvas {
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+    background-color: #101030;
+    background-repeat: repeat;
+    background-size: 100% 100%;
+    border: 2px solid #000;
+    border-radius: var(--ss-area-border-radius);
+    animation: SScanvasAnimation 5s linear infinite;
+}
+
+/* Tela de título */
+#ss-title-screen {
+    position: absolute;
+    z-index: 2;
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+    background-color: #000;
+    background-image: url("https://i.imgur.com/7ZplQRb.png");
+    background-size: 50% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: TitleScreen 3s linear infinite;
+}
+#ss-title-screen[class~="closed"] {
+    display: none;
+}
+
+@keyframes TitleScreen {
+    0% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+/* Imagem da logo do jogo */
+#ss-game-logo {
+    pointer-events: none;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    animation: GameLogo 1s ease-in-out infinite;
+}
+
+@keyframes GameLogo {
+    0%, 100% {
+        transform: translate(0px, 0px) rotate(0.5deg);
+    }
+    50% {
+        transform: translate(2px, 1px) rotate(-0.5deg);
+    }
+}
+
+/* Div do texto de quem fez o jogo */
+#ss-game-madeby-div {
+    margin: 0.5rem 0;
+}
+
+/* Texto de quem fez o jogo */
+#ss-game-madeby {
+    font-family: "Space";
+    font-size: 8pt;
+    color: #fff;
+}
+
+/* Divs dos botões do menu principal */
+.ss-main-menu-buttons-divs {
+    margin: 3px 0;
+}
+
+/* Botões do menu principal */
+.ss-main-menu-buttons {
+    cursor: pointer;
+    width: 10rem;
+    height: 2rem;
+    color: #fff;
+    font-family: "Space";
+    font-size: 8pt;
+    letter-spacing: 0.1rem;
+    border-width: 0;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 2px;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 2px;
+}
+.ss-main-menu-buttons:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+/* Botão de começar jogo */
+#ss-game-start-button {
+    background-color: #00d020;
+    background-image: linear-gradient(150deg, #00d020, #00d060);
+}
+
+/* Botão de escolher fase */
+#ss-level-select-button {
+    background-color: #d020d0;
+    background-image: linear-gradient(150deg, #d000d0, #8020d0);
+}
+
+/* Botão de alterar jogadores */
+#ss-players-active-button {
+    background-color: #3060ff;
+}
+#ss-players-active-button[class~="1p"] {
+    background-image: linear-gradient(150deg, #3060ff, #204080);
+}
+#ss-players-active-button[class~="2p"] {
+    background-image: linear-gradient(150deg, #3060ff 48%, #f02020 52%);
+}
+
+/* Botão de configurações */
+#ss-configs-button {
+    background-color: #a0a0a0;
+    background-image: linear-gradient(150deg, #a0a0a0, #606060);
+}
+
+/* Menu de seleção de fases */
+#ss-level-select-menu {
+    position: absolute;
+    z-index: 3;
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+    background-color: rgb(0, 0, 0, 0.8);
+    opacity: 1;
+    transition: all 0.3s;
+}
+#ss-level-select-menu[class~="closed"] {
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Barra da seleção de fases */
+#ss-level-select-bar {
+    width: var(--ss-canvas-width);
+    height: 3rem;
+    background-color: #202040;
+    background-image: linear-gradient(180deg, #101030, #1a1a3a, #101030);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+
+/* Div do botão de fechar seleção de fases */
+#ss-level-bar-close-div {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botão de fechar seleção de fases */
+#ss-level-bar-close-button {
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #c02020;
+    background-image: linear-gradient(180deg, #f02020, #a02020);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+#ss-level-bar-close-button:hover {
+    filter: drop-shadow(0 0 3px rgb(200, 100, 100, 0.8));
+}
+
+/* Imagem do botão de fechar seleção de fases */
+#ss-level-bar-close-button-image {
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+    filter: invert(1);
+}
+
+/* Div do título da seleção de fases */
+#ss-level-select-bar-title-div {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Título da seleção de fases */
+#ss-level-bar-title {
+    font-family: "Space";
+    font-size: 12pt;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px;
+}
+
+/* Div do total de estrelas da seleção de fases */
+#ss-level-select-bar-stars-div {
+    pointer-events: none;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagem do total de estrelas da seleção de fases */
+#ss-level-bar-star-image {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Div dos botões de seleção de fase */
+#level-select-buttons-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#ss-configs-div {
+    position: absolute;
+    z-index: 3;
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+    background-color: rgb(0, 0, 0, 0.8);
+    opacity: 1;
+    transition: all 0.3s;
+}
+#ss-configs-div[class~="closed"] {
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Barra das configurações */
+#ss-configs-bar {
+    width: var(--ss-canvas-width);
+    height: 3rem;
+    background-color: #202040;
+    background-image: linear-gradient(180deg, #101030, #1a1a3a, #101030);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+
+/* Div do botão de fechar configurações */
+#ss-configs-bar-close-div {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botão de fechar configurações */
+#ss-configs-bar-close-button {
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #c02020;
+    background-image: linear-gradient(180deg, #f02020, #a02020);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+#ss-configs-bar-close-button:hover {
+    filter: drop-shadow(0 0 3px rgb(200, 100, 100, 0.8));
+}
+
+/* Imagem do botão de fechar configurações */
+#ss-configs-bar-close-button-image {
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+    filter: invert(1);
+}
+
+/* Div do título das configurações */
+#ss-configs-bar-title-div {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Título das configurações */
+#ss-configs-title {
+    font-family: "Space";
+    font-size: 12pt;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px;
+}
+
+/* Container das configurações */
+#ss-configs-container {
+    width: 100%;
+}
+
+/* Div principal dos controles das configurações */
+.ss-configs-main-divs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+/* Divs do botões de configurações */
+.ss-configs-buttons-divs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botões das configurações */
+.ss-configs-buttons {
+    width: 90%;
+    height: 4rem;
+    background-color: #101030;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Alinhar divs dos botões de configurações */
+.ss-configs-buttons-flex {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Divs dos ícones dos botões de configurações */
+.ss-configs-buttons-icons-divs {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ícones dos botões de configurações */
+.ss-configs-buttons-icons {
+    pointer-events: none;
+    width: 40px;
+    height: 40px;
+}
+
+/* Divs dos textos dos botões de configurações */
+.ss-configs-buttons-texts-divs {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Divs dos títulos dos botões de configurações */
+.ss-configs-buttons-titles-divs {
+    margin: 3px 0;
+}
+
+/* Títulos dos botões de configurações */
+.ss-configs-buttons-titles {
+    color: #fff;
+    font-size: 10pt;
+    font-family: "Space";
+}
+
+/* Divs dos títulos dos botões de configurações */
+.ss-configs-buttons-subtitles-divs {
+    margin: 3px 0;
+}
+
+/* Títulos dos botões de configurações */
+.ss-configs-buttons-subtitles {
+    color: #fff;
+    font-size: 6pt;
+    font-family: "Space";
+}
+
+/* Divs das setas dos botões de configurações */
+.ss-configs-buttons-arrows-divs {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Setas dos botões de configurações */
+.ss-configs-buttons-arrows {
+    pointer-events: none;
+    width: 20px;
+    height: 15px;
+    transform: rotate(180deg);
+    transition: all 0.3s;
+}
+.ss-configs-buttons-arrows[class~="closed"] {
+    transform: rotate(0deg);
+}
+
+/* Área de configurar (depois do botão abert0) */
+.ss-configs-aba-divs {
+    width: 90%;
+    background-color: #0066ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Áreas dos controles dos jogadores */
+.ss-player-controls-divs {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #101030;
+}
+
+/* Alinhar imagens e controles dos jogadores */
+.ss-player-details-flex {
+    width: 25%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid rgb(255, 255, 255, 0.3);
+    border-left: 2px solid rgb(255, 255, 255, 0.3);
+    border-right: 2px solid rgb(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgb(0, 0, 0, 0.3);
+}
+
+/* Divs das imagens dos jogadores */
+/*.ss-player-ship-divs {
+    background-color: red;
+}*/
+
+/* Imagens dos jogadores nas configurações */
+.ss-player-ship-images {
+    pointer-events: none;
+    width: 40px;
+    height: 48px;
+}
+
+/* Labels dos jogadores nas configurações */
+.ss-player-labels {
+    color: #fff;
+    font-family: "Space";
+    font-size: 6pt;
+}
+
+/* Container dos controles dos jogadores */
+.ss-player-controls-container {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Divs de cada controle */
+.ss-player-control-divs {
+    cursor: pointer;
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border-top: 2px solid rgb(255, 255, 255, 0.3);
+    border-left: 2px solid rgb(255, 255, 255, 0.3);
+    border-right: 2px solid rgb(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgb(0, 0, 0, 0.3);
+    transition: all 0.3s;
+}
+.ss-player-control-divs[class~="selected"] {
+    background-color: #303080;
+}
+.ss-player-control-divs[class~="error"] {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+@keyframes ControlDivs {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: rotate(-2deg);
+    }
+    20%, 40%, 60%, 80% {
+        transform: rotate(2deg);
+    }
+}
+
+/* Imagens das teclas dos controles */
+.ss-player-control-images {
+    pointer-events: none;
+    width: 40px;
+    height: 40px;
+}
+
+/* Spans das teclas dos controles */
+.ss-player-control-spans {
+    color: #fff;
+    font-family: "Space";
+    font-size: 8pt;
+}
+
+/* Card das fases */
+#ss-level-card-div {
+    position: absolute;
+    z-index: 2;
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all 0.3s;
+}
+#ss-level-card-div[class~="closed"] {
+    display: none;
+}
+
+/* Divs dos botões de seleção de fases */
+.level-select-buttons-divs {
+    padding: 10px;
+}
+
+/* Botões de seleção de fases */
+.level-select-buttons {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    background-image: linear-gradient(180deg, rgba(30, 30, 50, 1), rgba(20, 20, 40, 1));
+    background-size: 100% 100%;
+    color: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.level-select-buttons:hover {
+    filter: drop-shadow(0 0 5px rgba(200, 50, 0, 0.7));
+}
+.level-select-buttons[class~="closed"] {
+    filter: grayscale(1);
+}
+
+/* Divs das categorias dos botões de seleção de fase */
+.level-select-categorie-divs {
+    position: absolute;
+    /*transform: translate(0px, -17.5px);*/ /* Esquerda */
+    transform: translate(38px, -16px);
+}
+
+/* Imagens das categorias dos botões de seleção de fase */
+.level-select-categorie-images {
+    width: 20px;
+    height: 20px;
+}
+
+/* Números nos botões da seleção de fases */
+.level-select-button-ids {
+    font-family: "Space";
+    font-size: 12pt;
+}
+
+/* Div das estrelas dos botões de seleção de fase */
+.level-select-stars-main {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 58px;
+}
+
+/* Divs das imagens das estrelas dos botões de seleção de fase */
+.level-select-stars-divs {
+    background-color: transparent;
+}
+.level-select-stars-divs[class~="gray"] {
+    filter: grayscale(1) brightness(0.75);
+}
+
+/* Imagens das estrelas dos botões de seleção de fase */
+.level-select-stars-images {
+    pointer-events: none;
+    width: 15px;
+    height: 15px;
+}
+
+
+/* Bandeira vermelha da introdução da fase */
+#ss-level-card-flag {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 3rem;
+    background-color: #f02020;
+    background-image: linear-gradient(135deg, #f02020, #c02020);
+    border-top: 2px solid goldenrod;
+    border-bottom: 2px solid goldenrod;
+}
+#ss-level-card-flag:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3.25rem;
+    top: -5.5px;
+    border-top: 4px solid #f02020;
+    border-bottom: 4px solid #f02020;
+}
+
+#ss-level-card-flag[class~="closed"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes LevelCardFlag {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes LevelCardFlagHide {
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Bandeira azul da descrição da fase */
+#ss-level-card-description-flag {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1.5rem;
+    top: calc(var(--ss-canvas-height) / 2 + 1.9rem);
+    background-color: #2070f0;
+}
+#ss-level-card-description-flag[class~="closed"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes LevelCardDescriptionFlag {
+    0% {
+        margin: 0 100%;
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes LevelCardDescriptionFlagHide {
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Div do nome da fase no card */
+#ss-level-card-name-div {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+#ss-level-card-name-div[class~="closed"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Nome da fase no card */
+#ss-level-card-name {
+    font-family: "Space";
+    font-size: 16pt;
+    color: #fff;
+    text-decoration: wavy underline rgb(240, 180, 50);
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+
+@keyframes LevelCardName {
+    0% {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Div da descrição da fase no card */
+#ss-level-card-description-div {
+    width: 100%;
+    height: 1.5rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: calc(var(--ss-canvas-height) / 2 + 1.9rem);
+    transition: all 0.3s;
+}
+#ss-level-card-description-div[class~="closed"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Descrição da fase no card */
+#ss-level-card-description {
+    font-family: "Space";
+    font-size: 10pt;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+
+/* Div das imagens no fundo das fases */
+#ss-background-frames {
+    position: absolute;
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+}
+
+/* Imagens no fundo das fases */
+.ss-bg-frames {
+    position: fixed;
+    z-index: 0;
+    background-size: 100% 100%;
+}
+
+/* Div do jogo congelado */
+#ss-freeze {
+    position: absolute;
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#ss-freeze[class~="closed"] {
+    display: none;
+}
+
+/* Área do jogo */
+#ss-game-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hud do jogo */
+#ss-hud {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: all 0.3s;
+}
+#ss-hud[class~="closed"] {
+    opacity: 0;
+}
+
+/* Hud das armas e vidas */
+#ss-weapon-hud {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+/* Huds das armas e vidas dos jogadores */
+.ss-weapon-player-huds {
+    width: 90px;
+    height: 35px;
+}
+
+
+/* Divs das vidas restantes */
+.ss-lifes-divs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.2rem;
+}
+.ss-lifes {
+    display: block;
+    width: var(--ss-lifes-width);
+    height: var(--ss-lifes-height);
+    background-image: url("https://i.imgur.com/FoI3NkH.gif");
+    background-size: 100% 100%;
+    pointer-events: none;
+}
+
+/* Divs das balas e tempo de recarga */
+.ss-recharge-divs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Divs de balas restantes */
+.ss-shots-divs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--ss-weapon-shots-width);
+    height: var(--ss-weapon-shots-height);
+    background-color: rgba(200, 200, 200, 1);
+    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(200, 200, 200, 1) 100%);
+    border-radius: 3px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/* Munições restantes */
+.ss-shots-counters {
+    font-family: "Space";
+    font-size: 8pt;
+}
+
+/* Div do tempo */
+#ss-time-div {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 1rem;
+    left: calc(var(--ss-canvas-width) / 2 - 1.25rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(50, 50, 50, 1);
+    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1), rgba(150, 150, 150, 1));
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    border: 2px solid rgba(200, 200, 200, 1);
+    border-radius: 50%;
+
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px;
+}
+
+/* Tempo restante */
+#ss-time {
+    font-family: "Space";
+    font-size: 14pt;
+    color: #fff;
+}
+
+/* Divs do tempo de recarga das armas */
+.ss-weapon-recharge-divs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: var(--ss-weapon-recharge-width);
+    height: var(--ss-weapon-recharge-height);
+    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(200, 200, 200, 1) 100%);
+    border-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* Barras de recarregar arma */
+.ss-recharges {
+    width: 90%;
+    height: calc(var(--ss-weapon-recharge-height) / 2 + 1px);
+    background-color: var(--ss-shot-0-color);
+    border-radius: 3px;
+    margin: 0 5%;
+    transition: all 0.1s;
+    box-shadow: rgba(255, 255, 255, 1) 0px 0px 5px;
+}
+.ss-recharges[class~="recharging"] {
+    filter: grayscale(0.6);
+}
+.ss-recharges[class~="shot-0"] {
+    background-image: linear-gradient(180deg, var(--ss-shot-0-color) 0%, rgb(10, 90, 200) 100%);
+}
+.ss-recharges[class~="shot-1"] {
+    background-image: linear-gradient(180deg, rgb(20, 200, 50) 0%, rgb(10, 150, 40) 100%);
+}
+
+@keyframes SSrecharging {
+    0% {
+        filter: brightness(0.5);
+        box-shadow: none;
+        width: 0%;
+    }
+    20% {
+        filter: brightness(0.6);
+    }
+    40% {
+        filter: brightness(0.7);
+    }
+    60% {
+        filter: brightness(0.8);
+    }
+    80% {
+        filter: brightness(0.9);
+    }
+    100% {
+        filter: brightness(1);
+        box-shadow: none;
+    }
+}
+
+/* Hud da direita (pontos e missões) */
+#ss-right-hud {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hud dos pontos */
+#ss-points-hud {
+    top: 15px;
+    right: 15px;
+}
+
+/* Divs dos pontos */
+.ss-points-divs {
+    width: var(--ss-points-width);
+    height: var(--ss-points-height);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Texto da pontuação */
+.ss-points-texts {
+    font-family: "Space";
+    font-size: 16pt;
+    color: #fff;
+    text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 3px;
+}
+
+/* Área de missões */
+#ss-missions-div {
+    width: var(--ss-points-width);
+    height: var(--ss-points-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
+/* Texto da missão */
+#ss-mission-text {
+    font-family: "Space";
+    font-size: 12pt;
+    color: #fff;
+}
+/* Ícone da missão */
+#ss-mission-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Div da barra de corrida */
+#ss-race-bar-div {
+    position: absolute;
+    right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7px;
+    height: 200px;
+    border-radius: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding: 2px 1px;
+    background-color: rgba(200, 200, 200, 1);
+}
+#ss-race-bar-div[class~="closed"] {
+    display: none;
+}
+
+/* Barra de corrida */
+#ss-race-bar {
+    display: block;
+    width: 80%;
+    height: 100%;
+    background-color: #202040;
+    background-image: linear-gradient(180deg, #366cbe 0%, #0066ff 100%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 0%;
+    border-radius: 20px;
+}
+
+/* Div de reiniciar jogo */
+#ss-restart-div {
+    z-index: 2;
+    width: var(--ss-canvas-width);
+    height: var(--ss-canvas-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+#ss-restart-div[class~="closed"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Div de vitória */
+#ss-victory-area {
+    position: absolute;
+    background-color: #fff;
+    padding: 1rem;
+    border-width: 0;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 3px;
+    opacity: 1;
+    transition: all 0.3s;
+}
+#ss-victory-area[class~="closed"] {
+    pointer-events: none;
+    opacity: 0;
+    display: none;
+}
+
+/* Div do texto de vitória */
+#ss-victory-text-div {
+    width: 100%;
+}
+
+/* Texto de vitória */
+#ss-victory-text {
+    font-family: "Space";
+    font-size: 18pt;
+}
+
+/* Div do botão de vitória */
+#ss-victory-button-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+}
+
+/* Botões dos menus após a fase */
+.ss-menu-buttons {
+    cursor: pointer;
+    width: 8rem;
+    height: 2rem;
+    color: #fff;
+    font-family: "Space";
+    font-size: 8pt;
+    letter-spacing: 0.1rem;
+    border-width: 0;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 2px;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 2px;
+}
+.ss-menu-buttons:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+/* Botão de vitória */
+#ss-victory-button {
+    background-color: #20d000;
+    background-image: linear-gradient(150deg, #20d000, #20a000);
+}
+
+/* Botão de reiniciar fase */
+#ss-restart-button {
+    background-color: #d0d000;
+    background-image: linear-gradient(150deg, #d0d000, #d0a000);
+}
+
+/* Botão de voltar ao menu principal */
+#ss-home-button {
+    background-color: #d02000;
+    background-image: linear-gradient(150deg, #d02000, #d00000);
+}
+
+/* Div do botão de voltar ao menu */
+.ss-menu-button-divs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+}
+
+/* Div das pontuações de vitoría */
+#ss-victory-scores-div {
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Divs dos scores */
+.ss-scores-divs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+/* Divs dos nomes dos scores */
+.ss-score-name-divs {
+    background-color: transparent;
+}
+
+/* Nomes dos scores */
+.ss-score-names {
+    font-family: "Space";
+    font-size: 8pt;
+    letter-spacing: 0.05rem;
+    transform: scale(1, 1.25);
+    -webkit-transform:scale(1, 1.25);
+    -moz-transform:scale(1, 1.25);
+    -ms-transform:scale(1, 1.25);
+    -o-transform:scale(1, 1.25);
+}
+
+/* Divs dos resultados do score */
+.ss-score-results-divs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Div de scores do jogador */
+#player-score-results-div {
+    font-family: "Space";
+}
+
+/* Div dos scores das vidas */
+#life-score-results-div {
+    font-family: "Space";
+}
+
+/* Div dos ícones de scores das vidas */
+#life-score-icons-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ícones de vida dos scores */
+.ss-score-life-icons {
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+}
+
+/* Imagem das balas do score */
+#shot-score-icon {
+    pointer-events: none;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Div do score das balas */
+#shot-score-results-div {
+    font-family: "Space";
+}
+
+/* Ícone de tempo do score */
+#time-score-icon {
+    pointer-events: none;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Div do score de tempo */
+#time-score-results-div {
+    font-family: "Space";
+}
+
+/* Div do score total */
+#total-score-results-div {
+    font-family: "Space";
+    font-size: 14pt;
+    border-bottom: 1px solid #20d000;
+}
+
+/* Div das estrelas de vitória */
+#ss-victory-stars-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Barra das estrelas */
+#ss-star-bar {
+    position: absolute;
+    display: block;
+    width: var(--ss-restart-div-width);
+    height: 0.2rem;
+    background-color: rgb(120, 120, 120, 1);
+}
+
+/* Barra de porcentagem das estrelas */
+#star-bar-percent {
+    width: 0%;
+    height: 100%;
+    background-color: rgb(218, 165, 32, 1);
+    box-shadow: rgba(218, 165, 32, 1) 0px 0px 3px;
+}
+
+/* Div principal das estrelas */
+#ss-stars-main-div {
+    width: var(--ss-restart-div-width);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16.5%;
+}
+
+/* Divs das estrelas */
+.ss-stars-divs {
+    transform: translate(18px);
+}
+.ss-stars-divs[class~="gray"] {
+    filter: grayscale(1);
+}
+
+/* Divs das labels das estrelas */
+.ss-stars-labels {
+    position: absolute;
+    top: -0.9rem;
+    left: -0.5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 25px;
+    padding: 1px 3px;
+    opacity: 1;
+    transition: all 0.3s;
+}
+.ss-stars-labels[class~="closed"] {
+    opacity: 0;
+}
+
+/* Imagens das estrelas */
+.ss-stars-images {
+    pointer-events: none;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Área de derrota */
+#ss-defeat-area {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem 0;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 5px;
+}
+#ss-defeat-area[class~="closed"] {
+    display: none;
+}
+
+#ss-defeat-text-div {
+    width: 100%;
+}
+
+#ss-defeat-text {
+    font-family: "Space";
+    font-size: 18pt;
+}
+
+/* Jogador */
+#ss-player {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    background-position: center;
+    background-size: 100% 100%;
+    transition: all 0.03s linear;
+    animation: SSplayerAnimationHover 1s ease-in-out infinite;
+    filter: drop-shadow(0 0 3px rgba(50, 100, 255, 0.5));
+}
+#ss-player[class~="hit"] {
+    filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.5));
+}
+@keyframes PlayerHit {
+    0%, 70%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30%, 50% {
+        transform: rotate(-5deg);
+    }
+    20%, 40%, 60% {
+        transform: rotate(5deg);
+    }
+}
+
+/* Tiros */
+.shoots {
+    background-color: var(--ss-shot-0-color);
+    background-size: 100% 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(208,128,208,.1), 0 0 0 5px rgba(208,128,208,.1), 0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+/* Inimigos */
+.ss-enemies {
+    display: block;
+    background-size: 100% 100%;
+}
+
+/* Explosão dos inimigos */
+.ss-enemies-explosions {
+    position: absolute;
+    background-size: 100% 130%;
+    animation: explosion 1s linear 1;
+    transition: all 0.1s;
+}
+@keyframes explosion {
+    0% {background-image: url("https://i.imgur.com/yDOuhx6.gif");}
+    0%, 10% {opacity: 1;}
+    80% {opacity: 0;}
+}
+
+/* Item de balas */
+.ss-shot-items {
+    position: absolute;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5))
+}
+
+/* Tiro dos inimigos */
+.ss-enemy-shots {
+    position: absolute;
+    display: block;
+    width: var(--ss-enemy-shot-0-width);
+    height: var(--ss-enemy-shot-0-height);
+    background-color: var(--ss-enemy-shot-0-color);
+    background-size: 100% 100%;
+    /*border-radius: 50%;*/
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4))
+}
+.ss-enemy-shots::before {
+    content: "";
+    background: linear-gradient(90deg, var(--ss-enemy-shot-0-color), transparent);
+    position: absolute;
+    top: -20px;
+    left: -21.2px;
+    width: 50px;
+    height: 3px;
+    transform: rotate(270deg);
+}
+
+/* Pontos ganhos */
+.ss-points-gained {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: "Space";
+    font-size: 12pt;
+}
+
+/* Fragmentos de explosão */
+.ss-explosion-fragments {
+    position: absolute;
+    display: block;
+    background-size: 100% 100%;
+}
+
+/* Animação de hover do jogador */
+@keyframes SSplayerAnimationHover {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+}
+
+/* Movimento do tiro (inimigo 1 - movimento 0)*/
+@keyframes SSenemie1Move0 {
+    100% {
+        top: calc(var(--ss-canvas-height) - var(--ss-enemy-1-height));
+    }
+}
+
+/* Movimento do tiro (inimigo 1 - movimento 1)*/
+@keyframes SSenemie1Move1 {
+    0%, 100% {
+        top: 0px;
+    }
+    85%, 90% {
+        top: calc(var(--ss-canvas-height) - var(--ss-enemy-1-height));
+    }
+    0%, 85% {
+        transform: rotate(0deg);
+    }
+    90%, 100% {
+        transform: rotate(180deg);
+    }
+    0%, 85% {
+        filter: none;
+    }
+    85%, 90%, 100% {
+        filter: drop-shadow(0 0 0.3rem rgba(255, 0, 0, 0.5));
+    }
+}
+
+@keyframes SScanvasAnimation {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 0 var(--ss-canvas-height);
+    }
+}
+
+/* Animação do tiro caindo */
+@keyframes SSshotItemsFall {
+    100% {
+        top: calc(var(--ss-canvas-height) - var(--ss-enemy-0-shot-0-height));
+    }
+}
+
+/* Animação dos pontos subindo */
+@keyframes SSpointsAnimation {
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+/* Controles para mobile */
+#ss-controls {
+    position: absolute;
+    z-index: 1;
+    width: var(--ss-canvas-width);
+}
+
+/* Div dos botões de controle */
+#ss-controls-div {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    border-radius: 5px;
+}
+
+/* Botões de controles */
+.ss-controls-buttons {
+    cursor: pointer;
+    width: 33.33%;
+    height: 1.8rem;
+    font-family: "Space";
+    font-size: 12pt;
+}
+
+/* Ícones dos botões de controles */
+.ss-controls-buttons-icons {
+    filter: invert(1);
+    width: 15px;
+    height: 15px;
+}
+
+/* Área para esconder */
+#ss-hide-area {
+    position: fixed;
+    z-index: 1;
+    width: var(--ss-canvas-width);
+    height: 100%;
+    background-color: var(--ss-page-background-color);
+    border-left: 2px solid var(--ss-page-background-color);
+    border-right: 2px solid var(--ss-page-background-color);
+}
+
+#ss-hide-bottom {
+    position: fixed;
+    z-index: 2;
+    width: var(--ss-canvas-width);
+    height: 100%;
+    bottom: 0;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 480px) {
+    /* Canvas do space shooter */
+    /*#space-shooter-canvas {
+        width: 100vw;
+        height: 100vh;
+    }*/
+}

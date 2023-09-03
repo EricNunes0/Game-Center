@@ -1,0 +1,19 @@
+@font-face {
+	font-family: "Poppins";
+	src: url("../public/Fonts/font_Poppins.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --home-stars-color-rgba: rgba(208, 128, 208, 1);
+  --home-starts-color-hex: #e080e0;
+}
+
+h1, h2, h3, h4, h5, h6, p, abbr {
+  font-family: "Poppins";
+  text-align: center;
+}

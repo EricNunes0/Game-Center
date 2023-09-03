@@ -1,0 +1,13 @@
+{
+    "places": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "player1": {
+        "color": "#3060ff",
+        "points": 0
+    },
+    "player2": {
+        "color": "#f02020",
+        "points": 0
+    },
+    "tieCount": 0,
+    "turnPlayer": 1
+}
