@@ -14,13 +14,13 @@
     "numbers6": [],
     "numbers7": [],
     "minesweeperIcons": {
-        "red": "https://i.imgur.com/I6t0QEc.png",
-        "orange": "https://i.imgur.com/pStcnmI.png",
-        "yellow": "https://i.imgur.com/P2G3vuf.png",
-        "green": "https://i.imgur.com/VQS99da.png",
-        "blue": "https://i.imgur.com/NVUvaNt.png",
-        "pink": "https://i.imgur.com/Lu3sE4Q.png",
-        "gray": "https://i.imgur.com/rqragDE.png"
+        "red": "Images/minesweeper/img_MinesweeperIconRed.png",
+        "orange": "Images/minesweeper/img_MinesweeperIconOrange.png",
+        "yellow": "Images/minesweeper/img_MinesweeperIconYellow.png",
+        "green": "Images/minesweeper/img_MinesweeperIconGreen.png",
+        "blue": "Images/minesweeper/img_MinesweeperIconBlue.png",
+        "pink": "Images/minesweeper/img_MinesweeperIconPink.png",
+        "gray": "Images/minesweeper/img_MinesweeperIconGray.png"
     },
     "minesweeperControls": [
         {

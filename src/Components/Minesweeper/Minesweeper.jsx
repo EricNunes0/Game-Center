@@ -75,21 +75,6 @@ export default function Minesweeper() {
                                     <p className = "config-labels" id = "grade-label">Editar tabuleiro</p>
                                 </div>
                             </div>
-                            {/*<div className = "configurations-divs" id = "help-div">
-                                <button type = "button" className = "configs-buttons" id = "help-button" tabIndex="-1">
-                                    <img className = {`configs-icons ${minesweeperJSON.theme}`} id = "help-icon" src = "https://i.imgur.com/HsXPZix.png"/>
-                                </button>
-                            </div>
-                            <div className = "configurations-divs" id = "sound-div">
-                                <button type = "button" className = "configs-buttons" id = "sound-button" tabIndex="-1">
-                                    <img className = {`configs-icons ${minesweeperJSON.theme}`} id = "sound-icon" src = "https://i.imgur.com/hmiIbPC.png"/>
-                                </button>
-                            </div>
-                            <div id = "color-div">
-                                <button type = "button" className = "configs-buttons" id = "color-button" tabIndex="-1">
-                                    <img className = {`configs-icons ${minesweeperJSON.theme}`} id = "color-icon" src = "https://i.imgur.com/416g7pe.png"/>
-                                </button>
-                            </div>*/}
                         </div>
                     </div>
                     <div id = "title-div">
@@ -98,7 +83,7 @@ export default function Minesweeper() {
                     <div id = "game-hud">
                         <div className = "items-hud-divs" id = "bomb-div">
                             <div id = "bombas-image-div">
-                                <img className = "hud-images" id = "bomba-image" alt = "Bombas" src = "https://i.imgur.com/rqragDE.png"/>
+                                <img className = "hud-images" id = "bomba-image" alt = "Bombas" src = {minesweeperJSON.minesweeperIcons.gray}/>
                             </div>
                             <div className = "count-divs" id = "bombas-div">
                                 <p className = {`counts ${minesweeperJSON.theme}`} id = "bombas-count">0</p>
@@ -106,7 +91,7 @@ export default function Minesweeper() {
                         </div>
                         <div className = "items-hud-divs" id = "bandeira-div">
                             <div id = "bandeira-image-div">
-                                <img className = "hud-images" id = "bandeira-image" alt = "Bandeiras" src = "https://i.imgur.com/y3kf2ja.png"/>
+                                <img className = "hud-images" id = "bandeira-image" alt = "Bandeiras" src = "Images/minesweeper/img_flag.png"/>
                             </div>
                             <div className = "count-divs" id = "bandeiras-div">
                                 <p className = {`counts ${minesweeperJSON.theme}`} id = "bandeiras-count">0</p>
