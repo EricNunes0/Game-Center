@@ -2,8 +2,6 @@ import audio from "../../Functions/audios";
 import unselectPlayerControlDivs from "./unselectPlayerControlDivs";
 
 export default function openConfigsMenu() {
-    console.log("%cALERTA DE SEGURAN\xc7A", "color: red; font-size: xx-large;");
-                
     unselectPlayerControlDivs();
     const configsDiv = document.getElementById(`ss-configs-div`);
     let classArray = configsDiv.classList;

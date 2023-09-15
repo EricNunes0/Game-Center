@@ -66,7 +66,7 @@ export default function scoreResults() {
 function createLifeResultDiv(n) {
     return (
         <div className = "ss-score-lifes-divs" key = {`ss-score-life-div-${n}`}>
-            <img className = "ss-score-life-icons" src = "https://i.imgur.com/FoI3NkH.gif"></img>
+            <img className = "ss-score-life-icons" src = "Images/spaceshooter/life.gif"></img>
         </div>
     )
 }

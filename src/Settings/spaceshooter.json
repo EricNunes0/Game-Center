@@ -1,5 +1,5 @@
 {
-    "icon": "https://i.imgur.com/LiQE5Qe.png",
+    "icon": "Images/spaceshooter/icon.png",
     "freeze": false,
     "freezeMovesOnly": false,
     "keysActive": false,
@@ -8,7 +8,7 @@
     "enemies": {
         "0": {
             "id": 0,
-            "ship": "https://i.imgur.com/tHXMxn4.png",
+            "ship": "Images/spaceshooter/enemies/enemy(0).png",
             "animations": ["SSenemie0Move0", "SSenemie0Move1", "SSenemie0Move2"],
             "width": 40,
             "height": 48,
@@ -28,7 +28,7 @@
         },
         "1": {
             "id": 1,
-            "ship": "https://i.imgur.com/JJmSpuc.png",
+            "ship": "Images/spaceshooter/enemies/enemy(1).png",
             "animations": ["SSenemie1Move0", "SSenemie1Move1"],
             "width": 40,
             "height": 48,
@@ -135,7 +135,7 @@
         "0": {
             "width": 20,
             "height": 20,
-            "background": "https://i.imgur.com/eiGYKUG.gif",
+            "background": "Images/spaceshooter/guns/gun(0).gif",
             "shotsUse": 1,
             "recharge": 5,
             "time": 1.5,
@@ -149,7 +149,7 @@
         "1": {
             "width": 20,
             "height": 20,
-            "background": "https://i.imgur.com/KnjqFhx.gif",
+            "background": "Images/spaceshooter/guns/gun(1).gif",
             "shotsUse": 1,
             "recharge": 5,
             "time": 2,
@@ -216,7 +216,7 @@
         {
             "id": 0,
             "categorie": "K",
-            "cenary": "https://i.imgur.com/j4QpT2u.png",
+            "cenary": "Images/spaceshooter/levels/level(0).png",
             "name": "Terra",
             "description": "Derrote 10 inimigos",
             "song": "../../Audios/space/snd_level(0).mp3",
@@ -245,7 +245,7 @@
         {
             "id": 1,
             "categorie": "K",
-            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 1",
             "description": "Derrote 15 inimigos",
             "song": "../../Audios/space/snd_level(1).mp3",
@@ -286,7 +286,7 @@
         {
             "id": 2,
             "categorie": "K",
-            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 2",
             "description": "Derrote 20 inimigos",
             "song": "../../Audios/space/snd_level(1).mp3",
@@ -315,7 +315,7 @@
         {
             "id": 3,
             "categorie": "C",
-            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 3",
             "description": "Colete 5 orbs",
             "song": "../../Audios/space/snd_level(1).mp3",
@@ -346,7 +346,7 @@
         {
             "id": 4,
             "categorie": "K",
-            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 4",
             "description": "Derrote 25 inimigos",
             "song": "../../Audios/space/snd_level(1).mp3",
@@ -376,7 +376,7 @@
         {
             "id": 5,
             "categorie": "B",
-            "cenary": "https://i.imgur.com/H1KxJMQ.png",
+            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 5",
             "description": "Derrote o chefe",
             "song": "../../Audios/space/snd_boss(0).mp3",
@@ -665,16 +665,16 @@
     ],
     "missionCategories": {
         "K": {
-            "icon": "https://i.imgur.com/YMqMhvJ.png"
+            "icon": "Images/spaceshooter/modes/mode(0).png"
         },
         "C": {
-            "icon": "https://i.imgur.com/xlAX0sg.png"
+            "icon": "Images/spaceshooter/modes/mode(1).png"
         },
         "B": {
-            "icon": "https://i.imgur.com/TkWEnrx.png"
+            "icon": "Images/spaceshooter/modes/mode(2).png"
         },
         "R": {
-            "icon": "https://i.imgur.com/KkUabLH.png"
+            "icon": "Images/spaceshooter/modes/mode(3).png"
         }
     }
 }

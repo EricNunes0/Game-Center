@@ -4,7 +4,7 @@
 }
 
 :root {
-    --ss-page-background-color: rgba(10, 20, 40, 1);
+    --ss-page-background-color: #202040;
     --ss-area-border-radius: 5px;
     --ss-canvas-width: 20rem; /* 20rem */
     --ss-canvas-height: 35rem; /* 35rem */
@@ -96,6 +96,7 @@
     background-size: 100% 100%;
     border: 2px solid #000;
     border-radius: var(--ss-area-border-radius);
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.5);
     animation: SScanvasAnimation 5s linear infinite;
 }
 
@@ -106,7 +107,7 @@
     width: var(--ss-canvas-width);
     height: var(--ss-canvas-height);
     background-color: #000;
-    background-image: url("https://i.imgur.com/7ZplQRb.png");
+    background-image: url("../../../public/Images/spaceshooter/titlescreen.png");
     background-size: 50% 100%;
     display: flex;
     flex-direction: column;
@@ -891,7 +892,7 @@
     display: block;
     width: var(--ss-lifes-width);
     height: var(--ss-lifes-height);
-    background-image: url("https://i.imgur.com/FoI3NkH.gif");
+    background-image: url("../../../public/Images/spaceshooter/life.gif");
     background-size: 100% 100%;
     pointer-events: none;
 }
@@ -912,14 +913,17 @@
     width: var(--ss-weapon-shots-width);
     height: var(--ss-weapon-shots-height);
     background-color: rgba(200, 200, 200, 1);
-    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(200, 200, 200, 1) 100%);
+    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(150, 150, 150, 1) 100%);
     border-radius: 3px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    outline: 1px solid rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.3));
 }
 
 /* Munições restantes */
 .ss-shots-counters {
+    color: #000;
     font-family: "Space";
     font-size: 8pt;
 }
@@ -959,10 +963,12 @@
     align-items: center;
     width: var(--ss-weapon-recharge-width);
     height: var(--ss-weapon-recharge-height);
-    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(200, 200, 200, 1) 100%);
+    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(150, 150, 150, 1) 100%);
     border-radius: 3px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    outline: 1px solid rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.3));
 }
 
 /* Barras de recarregar arma */
@@ -1434,7 +1440,7 @@
     transition: all 0.1s;
 }
 @keyframes explosion {
-    0% {background-image: url("https://i.imgur.com/yDOuhx6.gif");}
+    0% {background-image: url("../../../public/Images/spaceshooter/explosion.gif");}
     0%, 10% {opacity: 1;}
     80% {opacity: 0;}
 }

@@ -72,7 +72,7 @@ export default function SpaceShooter() {
                             <div id = "ss-level-select-bar">
                                 <div id = "ss-level-bar-close-div">
                                     <button type = "button" id = "ss-level-bar-close-button" onClick = {() => levelSelectMenu()}>
-                                        <img id = "ss-level-bar-close-button-image" src = "https://i.imgur.com/6N1gIse.png"></img>
+                                        <img id = "ss-level-bar-close-button-image" src = "Images/spaceshooter/x.png"></img>
                                     </button>
                                 </div>
                                 <div id = "ss-level-select-bar-title-div">
@@ -89,7 +89,7 @@ export default function SpaceShooter() {
                             <div id = "ss-configs-bar">
                                 <div id = "ss-configs-bar-close-div">
                                     <button type = "button" id = "ss-configs-bar-close-button" onClick = {() => openConfigsMenu()}>
-                                        <img id = "ss-configs-bar-close-button-image" src = "https://i.imgur.com/6N1gIse.png"></img>
+                                        <img id = "ss-configs-bar-close-button-image" src = "Images/spaceshooter/x.png"></img>
                                     </button>
                                 </div>
                                 <div id = "ss-configs-bar-title-div">
@@ -102,7 +102,7 @@ export default function SpaceShooter() {
                                         <button type = "button" className = "ss-configs-buttons" id = "ss-config-button-controls">
                                             <div className = "ss-configs-buttons-flex">
                                                 <div className = "ss-configs-buttons-icons-divs">
-                                                    <img className = "ss-configs-buttons-icons" src = "https://i.imgur.com/Tyjyk3q.png" width = {40} height = {40}></img>
+                                                    <img className = "ss-configs-buttons-icons" src = "Images/spaceshooter/svgs/gear.svg" width = {40} height = {40}></img>
                                                 </div>
                                                 <div className = "ss-configs-buttons-texts-divs">
                                                     <div className = "ss-configs-buttons-titles-divs">
@@ -252,7 +252,7 @@ export default function SpaceShooter() {
                                                 </div>
                                                 <div className = "ss-score-results-divs">
                                                     <div id = "shot-score-icons-div">
-                                                        <img id = "shot-score-icon" src = "https://i.imgur.com/eiGYKUG.gif"></img>
+                                                        <img id = "shot-score-icon" src = "Images/spaceshooter/guns/gun(0).gif"></img>
                                                     </div>
                                                     <div id = "shot-score-results-div"></div>
                                                 </div>
@@ -263,7 +263,7 @@ export default function SpaceShooter() {
                                                 </div>
                                                 <div className = "ss-score-results-divs">
                                                     <div id = "time-score-icons-div">
-                                                        <img id = "time-score-icon" src = "https://i.imgur.com/eA9yAr6.gif"></img>
+                                                        <img id = "time-score-icon" src = "Images/spaceshooter/clock.gif"></img>
                                                     </div>
                                                     <div id = "time-score-results-div"></div>
                                                 </div>

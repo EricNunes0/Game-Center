@@ -25,7 +25,7 @@ export default function createOrb() {
         left: ${shotLeft}px;
         width: ${orbWidth}px;
         height: ${orbHeight}px;
-        background-image: url("https://i.imgur.com/yWE4Ecf.png");
+        background-image: url("Images/spaceshooter/orbs/orb(0).png");
         animation: SSshotItemsFall ${dropTime}s linear 1;
     `;
 
