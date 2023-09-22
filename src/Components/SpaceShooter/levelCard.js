@@ -36,11 +36,13 @@ export default function levelCard() {
             cardDescriptionFlag.style.animation = `LevelCardFlagDescriptionHide 0.2s linear 1`;
 
             setTimeout(function() {
-                levelCardDiv.classList.add("closed");
-                cardFlag.classList.add("closed");
-                cardDescriptionFlag.classList.add("closed");
                 cardNameDiv.classList.add("closed");
                 cardDescriptionDiv.classList.add("closed");
+                cardFlag.classList.add("closed");
+                cardDescriptionFlag.classList.add("closed");
+                setTimeout(function() {
+                    levelCardDiv.classList.add("closed")
+                }, 100);
             }, 200);
         }, 2000);
     }, 2000);

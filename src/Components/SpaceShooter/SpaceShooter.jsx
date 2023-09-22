@@ -29,6 +29,7 @@ import CreatePointsHud from "./CreatePointsHud";
 import openConfigsMenu from "./openConfigsMenu";
 import changePlayerControls from "./changePlayerControls";
 import backgroundAnimation from "./backgroundAnimation";
+import pauseGame from "./pauseGame";
 
 export default function SpaceShooter() {
     changePageTitle(`Game Center - Space Shooter`);
@@ -325,15 +326,15 @@ export default function SpaceShooter() {
                     </div>
                     <div id = "ss-controls">
                         <div id = "ss-controls-div">
-                            <button className = "ss-controls-buttons" type = "button" onClick = {() => movePlayer("left")}>
-                                <img className = "ss-controls-buttons-icons" src = "Images/Space/icons/arrowLeft.png"></img>
+                            <button className = "ss-controls-buttons" type = "button" onClick = {() => pauseGame()}>
+                                <img className = "ss-controls-buttons-icons" src = "Images/spaceshooter/svgs/pause.svg"></img>
                             </button>
-                            <button className = "ss-controls-buttons" type = "button" onClick = {() => playerShot(0)}>
+                            {/*<button className = "ss-controls-buttons" type = "button" onClick = {() => playerShot(0)}>
                                 <img className = "ss-controls-buttons-icons" src = "Images/Space/icons/shot.png"></img>
                             </button>
                             <button className = "ss-controls-buttons" type = "button" onClick = {() => movePlayer("right")}>
-                                <img className = "ss-controls-buttons-icons" src = "Images/Space/icons/arrowRight.png"></img>
-                            </button>
+                                <img className = "ss-controls-buttons-icons" src = "Images/spaceshooter/svgs/pause.svg"></img>
+    </button>*/}
                         </div>
                         <div id = "ss-hide-area">
                             <div id = "ss-hide-bottom"></div>

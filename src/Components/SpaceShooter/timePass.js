@@ -14,20 +14,22 @@ export default function timePass() {
             clearInterval(timePassInterval);
             return;
         };
-        if(SSJSON.players[0].time < mission.time) {
-            for(let i = 0; i <= SSJSON.playersActive - 1; i++) {
-                SSJSON.players[i].time += 1;
-            };
-            SSTime.innerText = mission.time - SSJSON.players[0].time;
+        if(SSJSON.freeze === false) {
+            if(SSJSON.players[0].time < mission.time) {
+                for(let i = 0; i <= SSJSON.playersActive - 1; i++) {
+                    SSJSON.players[i].time += 1;
+                };
+                SSTime.innerText = mission.time - SSJSON.players[0].time;
 
-            let playerTime = SSJSON.players[0].time;
-            let missionTime = mission.time;
-            let timePercent = (playerTime * 100) / missionTime;
-            SSTimeDiv.style.backgroundSize = `100% ${100 - parseFloat(timePercent).toFixed(0)}%`;
-        } else {
-            freeze(true);
-            defeatPlayer();
-            clearInterval(timePassInterval);
-        }
+                let playerTime = SSJSON.players[0].time;
+                let missionTime = mission.time;
+                let timePercent = (playerTime * 100) / missionTime;
+                SSTimeDiv.style.backgroundSize = `100% ${100 - parseFloat(timePercent).toFixed(0)}%`;
+            } else {
+                freeze(true);
+                defeatPlayer();
+                clearInterval(timePassInterval);
+            }
+        };
     }, 1000);
 }
