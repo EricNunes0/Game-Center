@@ -14,6 +14,11 @@ export default function keyDown() {
 
     document.addEventListener("keydown", (e) => {
         let keyPressed = e.code;
+        if(keyPressed === "Tab") {
+            console.log("Tab gostoso");
+            e.preventDefault();
+            return;
+        };
         for(let i = 0; i <= SSJSON.playersActive - 1; i++) {
             let controls = SSJSON.players[i].controls;
             if(controls.movePlayerLeft.includes(keyPressed)) {

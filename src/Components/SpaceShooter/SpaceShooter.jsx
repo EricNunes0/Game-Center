@@ -16,8 +16,6 @@ import SSJSON from "../../Settings/spaceshooter.json";
 import restartGame from "./restartGame";
 import startGame from "./startGame";
 import nextLevel from "./nextLevel";
-import movePlayer from "./movePlayer";
-import playerShot from "./playerShot";
 import levelSelectMenu from "./levelSelectMenu";
 import CreateLevelSelectButtons from "./CreateLevelSelectButtons";
 import menuBack from "./menuBack";
@@ -32,6 +30,7 @@ import changePlayerControls from "./changePlayerControls";
 import backgroundAnimation from "./backgroundAnimation";
 import pauseGame from "./pauseGame";
 import logoAnimation from "./logoAnimation";
+import disablePauseButton from "./disablePauseButton";
 
 export default function SpaceShooter() {
     changePageTitle(`Game Center - Space Shooter`);
@@ -40,6 +39,7 @@ export default function SpaceShooter() {
         logoAnimation();
         backgroundAnimation();
         checkLevelSelectButtons();
+        disablePauseButton(true);
     }, []);
 
     return (
@@ -225,6 +225,7 @@ export default function SpaceShooter() {
                         <div id = "ss-background-frames"></div>
                         <div className = "closed" id = "ss-freeze"></div>
                         <div id = "ss-game-area">
+                            <div id = "ss-scenary-frames-div"></div>
                             <div id = "ss-hud">
                                 <CreateWeaponHud/>
                                 <div id = "ss-time-div">
@@ -252,6 +253,25 @@ export default function SpaceShooter() {
                                 </div>
                                 <div className = "closed" id = "ss-race-bar-div">
                                     <div id = "ss-race-bar"></div>
+                                </div>
+                                <div className = "closed" id = "ss-boss-bar-div">
+                                    <div id = "ss-boss-bar"></div>
+                                </div>
+                                <div className = "closed" id = "ss-pause-div">
+                                    <div className = "closed" id = "ss-pause-area">
+                                        <div id = "ss-pause-title-div">
+                                            <h1 id = "ss-pause-title">Pausa</h1>
+                                        </div>
+                                        <div className = "ss-menu-button-divs" id = "ss-victory-button-div">
+                                            <button type = "button" className = "ss-menu-buttons" id = "ss-victory-button" onClick = {() => pauseGame(false)}>Retomar</button>
+                                        </div>
+                                        <div className = "ss-menu-button-divs" id = "ss-restart-button-div">
+                                            <button type = "button" className = "ss-menu-buttons" id = "ss-restart-button" onClick = {() => restartGame()}>Reiniciar</button>
+                                        </div>
+                                        <div className = "ss-menu-button-divs">
+                                            <button type = "button" className = "ss-menu-buttons" id = "ss-home-button" onClick = {() => menuBack()}>Menu</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className = "closed" id = "ss-restart-div">
                                     <div className = "closed" id = "ss-victory-area">
@@ -355,7 +375,7 @@ export default function SpaceShooter() {
                     </div>
                     <div id = "ss-controls">
                         <div id = "ss-controls-div">
-                            <button className = "ss-controls-buttons" type = "button" onClick = {() => pauseGame()}>
+                            <button type = "button" className = "ss-controls-buttons" id = "ss-pause-button" onClick = {() => pauseGame()}>
                                 <img className = "ss-controls-buttons-icons" src = "Images/spaceshooter/svgs/pause.svg"></img>
                             </button>
                             {/*<button className = "ss-controls-buttons" type = "button" onClick = {() => playerShot(0)}>

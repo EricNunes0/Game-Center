@@ -5,8 +5,11 @@ import generateBoss from "./generateBoss";
 import generateRival from "./generateRival";
 import toggleObstacles from "./toggleObstacles";
 import raceAdvanceLoop from "./raceAdvanceLoop";
+import revealBossBar from "./revealBossBar";
 import revealRaceBar from "./revealRaceBar";
 import rivalsAdvanceLoop from "./rivalsAdvanceLoop";
+import resetBossBar from "./resetBossBar";
+var missionsActive = [];
 
 export default function getMission() {
     let mission = SSJSON.missions[SSJSON.currentMission];
@@ -22,6 +25,15 @@ export default function getMission() {
             };
             missionText.innerText = `${playersKills}/${mission.kills}`;
             getMissionInterval = setInterval(function() {
+                /* Para o caso de reiniciar a fase */
+                if(!missionsActive.includes(getMissionInterval)) {
+                    missionsActive.push(getMissionInterval);
+                };
+                if(missionsActive.length >= 2) {
+                    clearInterval(missionsActive[0]);
+                    missionsActive = [missionsActive[1]];
+                    return;
+                }
                 if(mission.isRunning === false) {
                     clearInterval(getMissionInterval);
                     return;
@@ -68,7 +80,6 @@ export default function getMission() {
                 }, time * 1000);
             }, mission.enemyInterval * 1000);
 
-
             let orbInterval = setInterval(function() {
                 if(mission.isRunning === false) {
                     clearInterval(orbInterval);
@@ -85,6 +96,8 @@ export default function getMission() {
             missionText.innerText = `${playersBossKills}/${mission.bosses.length}`;
             const boss = mission.bosses[Math.floor(Math.random() * mission.bosses.length)];
             generateBoss(0);
+            revealBossBar();
+            resetBossBar();
         } else if(mission.categorie === `R`) {
             missionText.innerText = `0/${mission.raceMeters}`;
             const rival = mission.rivals[Math.floor(Math.random() * mission.rivals.length)];

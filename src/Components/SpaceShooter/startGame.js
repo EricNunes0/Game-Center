@@ -29,13 +29,16 @@ import createPlayers from "./createPlayers";
 import centralizePlayers from "./centralizePlayers";
 import removePlayers from "./removePlayers";
 import CreatePointsHud from "./CreatePointsHud";
+import hideBossBar from "./hideBossBar";
 import hideRaceBar from "./hideRaceBar";
+import disablePauseButton from "./disablePauseButton";
 
 export default function startGame() {
     audio("../../Audios/space/snd_menuEffect(1).mp3", 1);
     let mission = SSJSON.missions[SSJSON.currentMission];
     if(mission) {
         hideLevelSelectMenu();
+        hideBossBar();
         hideRaceBar();
         enableMissionIsRunning();
         titleScreenClose();
@@ -66,5 +69,6 @@ export default function startGame() {
         setBackgroundFrames();
         startDropShotLoop();
         startWeaponDrop();
+        disablePauseButton(false);
     };
 };

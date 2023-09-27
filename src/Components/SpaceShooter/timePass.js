@@ -1,6 +1,7 @@
 import SSJSON from "../../Settings/spaceshooter.json";
 import defeatPlayer from "./defeatPlayer";
 import freeze from "./freeze";
+var timersActive = [];
 
 export default function timePass() {
     let mission = SSJSON.missions[SSJSON.currentMission];
@@ -10,6 +11,16 @@ export default function timePass() {
     
     SSTime.innerText = mission.time;
     let timePassInterval = setInterval(function() {
+        /* Para o caso de reiniciar a fase */
+        if(!timersActive.includes(timePassInterval)) {
+            timersActive.push(timePassInterval);
+        };
+        if(timersActive.length >= 2) {
+            clearInterval(timersActive[0]);
+            timersActive = [timersActive[1]];
+            return;
+        }
+        
         if(mission.isRunning === false) {
             clearInterval(timePassInterval);
             return;

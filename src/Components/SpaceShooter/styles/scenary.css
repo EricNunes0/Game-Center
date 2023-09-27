@@ -3,3 +3,9 @@
         background-position: 0 0px;
     }
 }
+
+@keyframes ScenaryFrame0 {
+    0% {
+        background-position: 320px 0;
+    }
+}

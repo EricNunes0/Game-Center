@@ -12,9 +12,7 @@ export default function generateEnemy(index) {
         };
     };
 
-
     let animationTime = Math.floor(Math.random() * 4) + 8; /* Tempo de cada animação */
-
     const gameArea = document.querySelector("#ss-game-area");
     const gameAreaOffsets = gameArea.getBoundingClientRect();
     const gameAreaTop = gameAreaOffsets.top;

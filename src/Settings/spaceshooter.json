@@ -231,7 +231,13 @@
                 "position": {
                     "y": "-440px"
                 },
-                "animation": "ScenaryAnimation0 180s linear infinite"
+                "animation": "ScenaryAnimation0 180s linear infinite",
+                "frames": [
+                    {
+                        "image": "Images/spaceshooter/levels/frame(0).png",
+                        "animation": "ScenaryFrame0 30s linear infinite"
+                    }
+                ]
             },
             "song": "../../Audios/space/snd_level(0).mp3",
             "kills": 10,

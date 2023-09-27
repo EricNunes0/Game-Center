@@ -12,6 +12,13 @@ import resetPoints from "./resetPoints";
 import resetShots from "./resetShots";
 import resetTime from "./resetTime";
 import logoAnimation from "./logoAnimation";
+import pauseGame from "./pauseGame";
+import explodeAllBossShots from "./explodeAllBossShots";
+import explodeAllEnemies from "./explodeAllEnemies";
+import explodeAllEnemyShots from "./explodeAllEnemyShots";
+import removePlayers from "./removePlayers";
+import disableMissionIsRunning from "./disableMissionIsRunning";
+import disablePauseButton from "./disablePauseButton";
 
 export default function menuBack() {
     audio("../../Audios/space/snd_menuEffect(1).mp3", 0.8);
@@ -26,5 +33,14 @@ export default function menuBack() {
     resetPoints();
     resetShots();
     resetTime();
+
+    pauseGame(false);
+    disableMissionIsRunning();
+    disablePauseButton(true);
+    explodeAllBossShots();
+    explodeAllEnemies();
+    explodeAllEnemyShots();
+    removePlayers();
+
     logoAnimation();
 };

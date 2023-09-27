@@ -3,6 +3,7 @@ import removeLoopAudios from "../../Functions/removeLoopAudios";
 import SSJSON from "../../Settings/spaceshooter.json";
 import defeatPlayer from "./defeatPlayer";
 import defeatPlayers from "./defeatPlayers";
+import disablePauseButton from "./disablePauseButton";
 import explodeAllBossShots from "./explodeAllBossShots";
 import explodeAllEnemies from "./explodeAllEnemies";
 import explodeAllEnemyShots from "./explodeAllEnemyShots";
@@ -21,6 +22,7 @@ export default function checkMission() {
             if(playersKills >= mission.kills) {
                 SSJSON.missions[SSJSON.currentMission].completed = true;
                 document.getElementById("ss-mission-text").style.color = "#0f0";
+                disablePauseButton(true);
                 explodeAllEnemies();
                 explodeAllEnemyShots();
                 mission.completed = true;
@@ -37,6 +39,7 @@ export default function checkMission() {
             if(playersOrbs >= mission.orbs) {
                 SSJSON.missions[SSJSON.currentMission].completed = true;
                 document.getElementById("ss-mission-text").style.color = "#0f0";
+                disablePauseButton(true);
                 explodeAllEnemies();
                 explodeAllEnemyShots();
                 explodeAllOrbs();
@@ -51,6 +54,7 @@ export default function checkMission() {
             if(bosses.length <= 0) {
                 SSJSON.missions[SSJSON.currentMission].completed = true;
                 document.getElementById("ss-mission-text").style.color = "#0f0";
+                disablePauseButton(true);
                 explodeAllEnemies();
                 explodeAllEnemyShots();
                 explodeAllBossShots();
@@ -69,6 +73,7 @@ export default function checkMission() {
                 if(positions[0][0].classList.contains(`ss-players`)) {
                     SSJSON.missions[SSJSON.currentMission].completed = true;
                     document.getElementById("ss-mission-text").style.color = "#0f0";
+                    disablePauseButton(true);
                     explodeAllEnemies();
                     explodeAllEnemyShots();
                     mission.completed = true;

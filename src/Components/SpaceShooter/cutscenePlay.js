@@ -20,7 +20,7 @@ export default function cutscenePlay(id, duration) {
             left: 0px;
             width: var(--ss-canvas-width);
             height: ${marsHeight};
-            background-color: var(--ss-page-background-color);
+            background-color: #000025;
             border-bottom: 2px solid #000;
         `;
         const mars = document.createElement("div");
