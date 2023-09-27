@@ -1,16 +1,13 @@
 import SSJSON from "../../Settings/spaceshooter.json";
 import audio from "../../Functions/audios";
-import dropShots from "./dropShots";
 import getMission from "./getMission";
 import setBackground from "./setBackground";
-import setPlayer from "./setPlayer";
 import timePass from "./timePass";
 import keyDown from "./keyDown";
 import titleScreenClose from "./titleScreenClose";
 import levelCard from "./levelCard";
 import starLabelEvent from "./starLabelEvent";
 import setBackgroundFrames from "./setBackgroundFrames";
-import setCenarySpeed from "./setCenarySpeed";
 import setEnemySizes from "./setEnemySizes";
 import setBossesSizes from "./setBossesSizes";
 import startWeaponDrop from "./startWeaponDrop";
@@ -67,7 +64,6 @@ export default function startGame() {
         setBossesSizes();
         setEnemySizes();
         setBackgroundFrames();
-        setCenarySpeed();
         startDropShotLoop();
         startWeaponDrop();
     };

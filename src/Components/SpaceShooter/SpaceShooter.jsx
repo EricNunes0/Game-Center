@@ -10,6 +10,7 @@ import "./styles/obstacles.css";
 import "./styles/orbs.css";
 import "./styles/shotMoves.css";
 import "./styles/rivals.css";
+import "./styles/scenary.css";
 import "./styles/scenaryFrames.css";
 import SSJSON from "../../Settings/spaceshooter.json";
 import restartGame from "./restartGame";
@@ -30,11 +31,13 @@ import openConfigsMenu from "./openConfigsMenu";
 import changePlayerControls from "./changePlayerControls";
 import backgroundAnimation from "./backgroundAnimation";
 import pauseGame from "./pauseGame";
+import logoAnimation from "./logoAnimation";
 
 export default function SpaceShooter() {
     changePageTitle(`Game Center - Space Shooter`);
     changePageIcon(SSJSON.icon);
     useEffect(() => {
+        logoAnimation();
         backgroundAnimation();
         checkLevelSelectButtons();
     }, []);
@@ -49,8 +52,10 @@ export default function SpaceShooter() {
                     <div id = "space-shooter-canvas">
                         <div id = "ss-title-screen">
                             <div id = "ss-game-title-div">
-                                <div id = "ss-game-logo-div">
-                                    <img src = "Images/Space/logo.png" id = "ss-game-logo"></img>
+                                <div id = "ss-game-logo-area">
+                                    <img src = "Images/Space/logo.png" className="hide" id = "ss-game-logo"></img>
+                                    <div id = "ss-game-logo-div">
+                                    </div>
                                 </div>
                                 <div id = "ss-game-madeby-div">
                                     <p id = "ss-game-madeby">Por Eric Nunes</p>
@@ -81,9 +86,20 @@ export default function SpaceShooter() {
                                 </div>
                                 <div id = "ss-level-select-bar-stars-div">
                                     <img id = "ss-level-bar-star-image" src = "Images/Space/star.png"></img>
+                                    <p id = "star-count">0</p>
                                 </div>
                             </div>
                             <CreateLevelSelectButtons/>
+                            <div id = "ss-level-select-details-area">
+                                <div id = "ss-level-select-details-div">
+                                    <div id = "ss-level-select-details-title-div">
+                                        <h1 id = "ss-level-select-details-title"></h1>
+                                    </div>
+                                    <div id = "ss-level-select-details-description-div">
+                                        <p id = "ss-level-select-details-description"></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         {/* Div das configurações */}
                         <div className = "closed" id = "ss-configs-div">
@@ -213,6 +229,19 @@ export default function SpaceShooter() {
                                 <CreateWeaponHud/>
                                 <div id = "ss-time-div">
                                     <p id = "ss-time">0</p>
+                                    <div id = "ss-clock">
+                                        <div id = "ss-clock-decoration">
+                                            <span id = "ss-clock-hand"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                            <span className = "ss-clock-dots"></span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id = "ss-right-hud">
                                     <CreatePointsHud/>

@@ -21,10 +21,11 @@ export default function CreatePointsHud() {
 
 function CreatePointsDiv(index) {
     let icon = CreatePointsIconDiv(index);
+    let key = Math.floor(Math.random() * (100 * 100));
     return(
-        <div className = "ss-points-divs" id = {`ss-points-div-${index}`} key = {index}>
+        <div className = "ss-points-divs" id = {`ss-points-div-${index}`} key = {index + key}>
             {icon}
-            <div className = "ss-points-texts-divs" id = {`ss-points-text-div-${index}`} key = {index}>
+            <div className = "ss-points-texts-divs" id = {`ss-points-text-div-${index}`} key = {index + key}>
                 <p className = "ss-points-texts" id = {`ss-points-${index}`}>{SSJSON.players[index].points}</p>
             </div>
         </div>

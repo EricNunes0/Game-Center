@@ -216,9 +216,23 @@
         {
             "id": 0,
             "categorie": "K",
-            "cenary": "Images/spaceshooter/levels/level(0).png",
             "name": "Terra",
             "description": "Derrote 10 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(0).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 180s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(0).mp3",
             "kills": 10,
             "enemyInterval": 5,
@@ -245,9 +259,23 @@
         {
             "id": 1,
             "categorie": "K",
-            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 1",
             "description": "Derrote 15 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(1).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 180s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(1).mp3",
             "kills": 15,
             "enemyInterval": 4,
@@ -286,9 +314,23 @@
         {
             "id": 2,
             "categorie": "K",
-            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 2",
             "description": "Derrote 20 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(1).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 90s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(1).mp3",
             "kills": 20,
             "enemyInterval": 3,
@@ -315,9 +357,23 @@
         {
             "id": 3,
             "categorie": "C",
-            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 3",
             "description": "Colete 5 orbs",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(1).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 60s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(1).mp3",
             "orbs": 5,
             "orbInterval": 10,
@@ -339,16 +395,29 @@
                 }
             },
             "enemies": [1],
-            "cenarySpeed": 4,
             "locked": true,
             "isRunning": false
         },
         {
             "id": 4,
             "categorie": "K",
-            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 4",
             "description": "Derrote 25 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(1).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 30s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(1).mp3",
             "kills": 25,
             "enemyInterval": 2,
@@ -369,16 +438,29 @@
                 }
             },
             "enemies": [0, 1],
-            "cenarySpeed": 3.5,
             "locked": true,
             "isRunning": false
         },
         {
             "id": 5,
             "categorie": "B",
-            "cenary": "Images/spaceshooter/levels/level(1).png",
             "name": "Nível 5",
             "description": "Derrote o chefe",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(1).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-1000px"
+                },
+                "animation": "ScenaryAnimation0 10s linear infinite"
+            },
             "song": "../../Audios/space/snd_boss(0).mp3",
             "kills": 0,
             "enemyInterval": 3,
@@ -399,7 +481,6 @@
                 }
             },
             "bosses": [0],
-            "cenarySpeed": 3,
             "endCutscene": {
                 "id": 0,
                 "duration": 20
@@ -410,9 +491,23 @@
         {
             "id": 6,
             "categorie": "K",
-            "cenary": "Images/Space/level(2).png",
             "name": "Nível 6",
             "description": "Derrote 30 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(2).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-385px"
+                },
+                "animation": "ScenaryAnimation0 5s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(2).mp3",
             "kills": 30,
             "enemyInterval": 3,
@@ -433,7 +528,6 @@
                 }
             },
             "enemies": [2],
-            "cenarySpeed": 3.5,
             "weapons": [1],
             "locked": true,
             "isRunning": false
@@ -441,9 +535,23 @@
         {
             "id": 7,
             "categorie": "K",
-            "cenary": "Images/Space/level(2).png",
             "name": "Nível 7",
             "description": "Derrote 35 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(2).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-385px"
+                },
+                "animation": "ScenaryAnimation0 4s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(2).mp3",
             "kills": 35,
             "enemyInterval": 2.5,
@@ -464,7 +572,6 @@
                 }
             },
             "enemies": [0, 2],
-            "cenarySpeed": 3.25,
             "weapons": [1],
             "locked": true,
             "isRunning": false
@@ -472,9 +579,23 @@
         {
             "id": 8,
             "categorie": "K",
-            "cenary": "Images/Space/level(2).png",
             "name": "Nível 8",
             "description": "Derrote 40 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(2).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-385px"
+                },
+                "animation": "ScenaryAnimation0 3s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(2).mp3",
             "kills": 40,
             "enemyInterval": 2,
@@ -495,7 +616,6 @@
                 }
             },
             "enemies": [0, 1, 2],
-            "cenarySpeed": 2.75,
             "weapons": [1],
             "locked": true,
             "isRunning": false
@@ -503,9 +623,23 @@
         {
             "id": 9,
             "categorie": "C",
-            "cenary": "Images/Space/level(2).png",
             "name": "Nível 9",
             "description": "Colete 10 orbs",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(2).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-385px"
+                },
+                "animation": "ScenaryAnimation0 2s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(2).mp3",
             "orbs": 10,
             "orbInterval": 10,
@@ -527,7 +661,6 @@
                 }
             },
             "enemies": [1, 2],
-            "cenarySpeed": 2.5,
             "weapons": [1],
             "endCutscene": {
                 "id": 1,
@@ -539,9 +672,23 @@
         {
             "id": 10,
             "categorie": "R",
-            "cenary": "Images/Space/level(2).png",
             "name": "Rival",
             "description": "Vença a corrida",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(2).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-385px"
+                },
+                "animation": "ScenaryAnimation0 1s linear infinite"
+            },
             "song": "../../Audios/space/snd_boss(1).mp3",
             "enemyInterval": 2,
             "time": 180,
@@ -560,7 +707,6 @@
                     "collected": false
                 }
             },
-            "cenarySpeed": 1.5,
             "rivals": [0],
             "obstacles": [0],
             "obstacleInterval": 1.75,
@@ -572,9 +718,23 @@
         {
             "id": 11,
             "categorie": "K",
-            "cenary": "Images/Space/level(3).png",
             "name": "Nível 11",
             "description": "Derrote 45 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(3).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 180s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(3).mp3",
             "kills": 45,
             "enemyInterval": 2,
@@ -595,16 +755,29 @@
                 }
             },
             "enemies": [0, 1, 2],
-            "cenarySpeed": 2.75,
             "locked": true,
             "isRunning": false
         },
         {
             "id": 12,
             "categorie": "K",
-            "cenary": "Images/Space/level(3).png",
             "name": "Nível 12",
             "description": "Derrote 10 inimigos",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(3).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 180s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(3).mp3",
             "kills": 10,
             "enemyInterval": 4,
@@ -626,16 +799,29 @@
             },
             "enemies": [3],
             "maxEnemies": 10,
-            "cenarySpeed": 2.7,
             "locked": true,
             "isRunning": false
         },
         {
             "id": 13,
             "categorie": "C",
-            "cenary": "Images/Space/level(3).png",
             "name": "Nível 13",
             "description": "Colete 15 orbs",
+            "scenary": {
+                "image": "Images/spaceshooter/levels/level(3).png",
+                "width": {
+                    "length": 100,
+                    "unit": "%"
+                },
+                "height": {
+                    "length": 1000,
+                    "unit": "px"
+                },
+                "position": {
+                    "y": "-440px"
+                },
+                "animation": "ScenaryAnimation0 180s linear infinite"
+            },
             "song": "../../Audios/space/snd_level(3).mp3",
             "orbs": 15,
             "orbInterval": 10,
@@ -657,7 +843,6 @@
                 }
             },
             "enemies": [0, 3],
-            "cenarySpeed": 2.5,
             "weapons": [1],
             "locked": true,
             "isRunning": false

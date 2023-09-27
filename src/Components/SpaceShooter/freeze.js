@@ -4,7 +4,6 @@ import pauseEnemyAnimations from "./pauseEnemyAnimations";
 import pauseEnemyShotAnimations from "./pauseEnemyShotAnimations";
 
 export default function freeze(boolean) {
-    console.log(boolean)
     const freeze = document.querySelector("#ss-freeze");
     if(boolean !== undefined) {
         if(boolean === true) {

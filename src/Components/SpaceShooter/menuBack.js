@@ -11,6 +11,7 @@ import resetOrbs from "./resetOrbs";
 import resetPoints from "./resetPoints";
 import resetShots from "./resetShots";
 import resetTime from "./resetTime";
+import logoAnimation from "./logoAnimation";
 
 export default function menuBack() {
     audio("../../Audios/space/snd_menuEffect(1).mp3", 0.8);
@@ -25,4 +26,5 @@ export default function menuBack() {
     resetPoints();
     resetShots();
     resetTime();
+    logoAnimation();
 };

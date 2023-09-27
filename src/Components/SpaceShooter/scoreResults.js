@@ -1,6 +1,7 @@
 import ReactDomServer from 'react-dom/server';
 import SSJSON from "../../Settings/spaceshooter.json";
 import EditSelectButtonStars from './EditSelectButtonStars';
+import editLevelSelectStars from './editLevelSelectStars';
 
 export default function scoreResults() {
     let mission = SSJSON.missions[SSJSON.currentMission];
@@ -61,6 +62,7 @@ export default function scoreResults() {
         };
     };
     EditSelectButtonStars(mission.id, stars);
+    editLevelSelectStars();
 }
 
 function createLifeResultDiv(n) {

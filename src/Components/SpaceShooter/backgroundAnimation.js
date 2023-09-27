@@ -5,9 +5,9 @@ export default function backgroundAnimation() {
         let triangleAmount = 20;
         for(let i = 0; i <= triangleAmount - 1; i++) {
             let triangleAnimationDuration = 2 + Math.floor(Math.random() * 3);
-            const triangle = document.createElement("object");
+            const triangle = document.createElement("img");
             triangle.className = `ss-background-triangles`;
-            triangle.data = `svg/space/triangle.svg`;
+            triangle.src = `Images/spaceshooter/svgs/star.svg`;
             triangle.style.top = `${Math.floor(Math.random() * 100)}%`;
             triangle.style.left = `${Math.floor(Math.random() * 100)}%`;
             triangle.style.animationDuration = `${triangleAnimationDuration}s`;

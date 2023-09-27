@@ -1,4 +1,5 @@
 import SSJSON from "../../Settings/spaceshooter.json";
+import levelSelectMouseEnter from "./levelSelectMouseEnter";
 import startSelectedLevel from "./startSelectedLevel";
 
 export default function CreateLevelSelectButtons() {
@@ -19,7 +20,7 @@ export default function CreateLevelSelectButtons() {
 function CreateLevelSelectButton(mission) {
     return(
         <div className = "level-select-buttons-divs" key = {mission.id}>
-            <button type = "button" className = "level-select-buttons" id = {`level-select-button-${mission.id}`} key = {`level-select-button-${mission.id}`} onClick = {() => {startSelectedLevel(mission.id)}}>
+            <button type = "button" className = "level-select-buttons" id = {`level-select-button-${mission.id}`} key = {`level-select-button-${mission.id}`} onClick = {() => {startSelectedLevel(mission.id)}} onMouseEnter={() => {levelSelectMouseEnter({buttonId: `level-select-button-${mission.id}`, title: mission.name, description: mission.description})}} onMouseLeave={() => {levelSelectMouseEnter({buttonId: `level-select-button-${mission.id}`, title: "", description: ""})}}>
                 <div className = "level-select-categorie-divs">
                     <img className = "level-select-categorie-images" src = {`${SSJSON.missionCategories[mission.categorie].icon}`}></img>
                 </div>

@@ -5,7 +5,7 @@ import freeze from "./freeze";
 export default function timePass() {
     let mission = SSJSON.missions[SSJSON.currentMission];
 
-    const SSTimeDiv = document.getElementById("ss-time-div");
+    const clockHand = document.getElementById("ss-clock-hand");
     const SSTime = document.getElementById("ss-time");
     
     SSTime.innerText = mission.time;
@@ -23,8 +23,9 @@ export default function timePass() {
 
                 let playerTime = SSJSON.players[0].time;
                 let missionTime = mission.time;
-                let timePercent = (playerTime * 100) / missionTime;
-                SSTimeDiv.style.backgroundSize = `100% ${100 - parseFloat(timePercent).toFixed(0)}%`;
+                let maxDeg = 360;
+                let timePercent = (playerTime * maxDeg) / missionTime;
+                clockHand.style.rotate = `${maxDeg - parseFloat(timePercent).toFixed(0)}deg`;
             } else {
                 freeze(true);
                 defeatPlayer();
