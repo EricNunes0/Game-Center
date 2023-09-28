@@ -3,6 +3,7 @@ import pauseCenaryAnimation from "./pauseCenaryAnimation";
 import pauseEnemyAnimations from "./pauseEnemyAnimations";
 import pauseEnemyShotAnimations from "./pauseEnemyShotAnimations";
 import pauseShotItems from "./pauseShotItems";
+import pauseOrbs from "./pauseOrbs";
 
 export default function freeze(boolean) {
     const freeze = document.querySelector("#ss-freeze");
@@ -14,6 +15,7 @@ export default function freeze(boolean) {
             pauseEnemyAnimations(true);
             pauseEnemyShotAnimations(true);
             pauseShotItems(true);
+            pauseOrbs(true);
         } else if(boolean === false) {
             SSJSON.freeze = false;
             freeze.classList.add("closed");
@@ -21,6 +23,7 @@ export default function freeze(boolean) {
             pauseEnemyAnimations(false);
             pauseEnemyShotAnimations(false);
             pauseShotItems(false);
+            pauseOrbs(false);
         };
     };
 }

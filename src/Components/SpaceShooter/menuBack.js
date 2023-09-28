@@ -19,6 +19,7 @@ import explodeAllEnemyShots from "./explodeAllEnemyShots";
 import removePlayers from "./removePlayers";
 import disableMissionIsRunning from "./disableMissionIsRunning";
 import disablePauseButton from "./disablePauseButton";
+import explodeAllOrbs from "./explodeAllOrbs";
 
 export default function menuBack() {
     audio("../../Audios/space/snd_menuEffect(1).mp3", 0.8);
@@ -40,6 +41,8 @@ export default function menuBack() {
     explodeAllBossShots();
     explodeAllEnemies();
     explodeAllEnemyShots();
+    explodeAllOrbs();
+
     removePlayers();
 
     logoAnimation();

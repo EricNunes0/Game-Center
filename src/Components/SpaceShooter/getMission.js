@@ -10,6 +10,7 @@ import revealRaceBar from "./revealRaceBar";
 import rivalsAdvanceLoop from "./rivalsAdvanceLoop";
 import resetBossBar from "./resetBossBar";
 var missionsActive = [];
+var orbsActive = [];
 
 export default function getMission() {
     let mission = SSJSON.missions[SSJSON.currentMission];
@@ -64,6 +65,15 @@ export default function getMission() {
             };
 
             getMissionInterval = setInterval(function() {
+                /* Para o caso de reiniciar a fase */
+                if(!missionsActive.includes(getMissionInterval)) {
+                    missionsActive.push(getMissionInterval);
+                };
+                if(missionsActive.length >= 2) {
+                    clearInterval(missionsActive[0]);
+                    missionsActive = [missionsActive[1]];
+                    return;
+                }
                 if(mission.isRunning === false) {
                     clearInterval(getMissionInterval);
                     return;
@@ -81,11 +91,25 @@ export default function getMission() {
             }, mission.enemyInterval * 1000);
 
             let orbInterval = setInterval(function() {
+                /* Para o caso de reiniciar a fase (orbs) */
+                if(!orbsActive.includes(orbInterval)) {
+                    orbsActive.push(orbInterval);
+                };
+                if(orbsActive.length >= 2) {
+                    clearInterval(orbsActive[0]);
+                    orbsActive = [orbsActive[1]];
+                    return;
+                }
                 if(mission.isRunning === false) {
                     clearInterval(orbInterval);
                     return;
                 };
-                createOrb();
+                if(mission.isRunning === true) {
+                    if(SSJSON.freeze === true) {
+                        return;
+                    };
+                    createOrb();
+                };
             }, orbIntervalSecs * 1000);
 
         } else if(mission.categorie === `B`) {

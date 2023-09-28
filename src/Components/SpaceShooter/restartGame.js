@@ -8,6 +8,7 @@ import pauseGame from "./pauseGame";
 import explodeAllBossShots from "./explodeAllBossShots";
 import explodeAllEnemies from "./explodeAllEnemies";
 import explodeAllEnemyShots from "./explodeAllEnemyShots";
+import explodeAllOrbs from "./explodeAllOrbs";
 
 export default function restartGame() {
     let mission = SSJSON.missions[SSJSON.currentMission];
@@ -21,6 +22,7 @@ export default function restartGame() {
         explodeAllBossShots();
         explodeAllEnemies();
         explodeAllEnemyShots();
+        explodeAllOrbs();
 
         startGame();
     };

@@ -829,7 +829,7 @@
                 "animation": "ScenaryAnimation0 180s linear infinite"
             },
             "song": "../../Audios/space/snd_level(3).mp3",
-            "orbs": 15,
+            "orbs": 12,
             "orbInterval": 10,
             "enemyInterval": 2,
             "time": 180,
@@ -849,6 +849,7 @@
                 }
             },
             "enemies": [0, 3],
+            "maxEnemies": 8,
             "weapons": [1],
             "locked": true,
             "isRunning": false
