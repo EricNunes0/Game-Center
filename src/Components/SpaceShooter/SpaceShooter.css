@@ -12,7 +12,7 @@
     --ss-lifes-height: 1rem; /* Altura das vidas */
     --ss-weapon-shots-width: 1.5rem; /* Largura da área de balas */
     --ss-weapon-shots-height: 1rem; /* Altura da área de balas */
-    --ss-weapon-recharge-width: 4rem; /* Largura da área de recarregar arma */
+    --ss-weapon-recharge-width: 80px; /* Largura da área de recarregar arma */
     --ss-weapon-recharge-height: 1rem; /* Altura da área de recarregar arma */
     --ss-points-width: 5rem; /* Largura da área de pontuação */
     --ss-points-height: 1.5rem; /* Altura da área da pontuação */
@@ -932,6 +932,7 @@
     height: 1.5rem;
     top: calc(var(--ss-canvas-height) / 2 + 1.9rem);
     background-color: #2070f0;
+    background-image: linear-gradient(90deg, #2070f0, #3030d0);
 }
 #ss-level-card-description-flag[class~="closed"] {
     opacity: 0;
@@ -1084,8 +1085,11 @@
 
 /* Huds das armas e vidas dos jogadores */
 .ss-weapon-player-huds {
-    width: 90px;
+    width: 100px;
     height: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 
@@ -1104,6 +1108,7 @@
     background-image: url("../../../public/Images/spaceshooter/life.gif");
     background-size: 100% 100%;
     pointer-events: none;
+    filter: drop-shadow(0px 0px 2px #ff90a0);
 }
 
 /* Divs das balas e tempo de recarga */
@@ -1122,11 +1127,11 @@
     width: var(--ss-weapon-shots-width);
     height: var(--ss-weapon-shots-height);
     background-color: rgba(200, 200, 200, 1);
-    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(150, 150, 150, 1) 100%);
+    background-image: linear-gradient(180deg, rgba(250, 250, 250, 1) 0%, rgba(200, 200, 200, 1) 100%);
     border-radius: 3px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    outline: 1px solid rgba(0, 0, 0, 0.5);
+    outline: 2px solid rgba(30, 30, 30, 1);
     filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.3));
 }
 
@@ -1172,6 +1177,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 /* Decoração do relógio */
@@ -1250,18 +1256,18 @@
     align-items: center;
     width: var(--ss-weapon-recharge-width);
     height: var(--ss-weapon-recharge-height);
-    background-image: linear-gradient(180deg, rgba(200, 200, 200, 1) 0%, rgba(150, 150, 150, 1) 100%);
+    background-image: linear-gradient(180deg, rgba(250, 250, 250, 1) 0%, rgba(200, 200, 200, 1) 100%);
     border-radius: 3px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    outline: 1px solid rgba(0, 0, 0, 0.5);
-    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.3));
+    outline: 2px solid rgba(30, 30, 30, 1);
+    filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.3));
 }
 
 /* Barras de recarregar arma */
 .ss-recharges {
     width: 90%;
-    height: calc(var(--ss-weapon-recharge-height) / 2 + 1px);
+    height: calc(var(--ss-weapon-recharge-height) / 2 + 2px);
     background-color: var(--ss-shot-0-color);
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
@@ -1330,12 +1336,19 @@
     gap: 5px;
 }
 
+/* Div do ícone dos pontos */
+.ss-points-icons-divs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Texto da pontuação */
 .ss-points-texts {
     font-family: "Space";
     font-size: 16pt;
     color: #fff;
-    text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 3px;
+    text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 3px, rgba(0, 0, 0, 1) 2px 2px 0px;
 }
 
 /* Área de missões */
@@ -1352,6 +1365,7 @@
     font-family: "Space";
     font-size: 12pt;
     color: #fff;
+    text-shadow: rgba(0, 0, 0, 1) 2px 2px 0px;
 }
 /* Ícone da missão */
 #ss-mission-icon {
@@ -1437,9 +1451,10 @@
     justify-content: center;
     align-items: center;
     opacity: 1;
+    transition: all 0.3s;
 }
 #ss-pause-div[class~="closed"] {
-    opacity: 0.9;
+    opacity: 0;
     pointer-events: none;
 }
 
@@ -1452,7 +1467,7 @@
     padding: 1rem;
     border-width: 0;
     border-radius: 10px;
-    box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 3px;
+    box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 3px, rgba(0, 0, 0, 0.6) 2px 2px 0px 0px;
     opacity: 1;
     transition: all 0.3s;
 }
@@ -1460,7 +1475,6 @@
     pointer-events: none;
     transform: scale(0.5);
     opacity: 0;
-    display: none;
 }
 
 /* Div do título da pausa */
@@ -1484,10 +1498,11 @@
     justify-content: center;
     align-items: center;
     opacity: 1;
+    transition: all 0.3s;
 }
 #ss-restart-div[class~="closed"] {
-    opacity: 0;
     pointer-events: none;
+    opacity: 0;
 }
 
 /* Div de vitória */
@@ -1787,9 +1802,12 @@
     padding: 1rem 0;
     border-radius: 10px;
     box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 5px;
+    transition: all 0.3s;
 }
 #ss-defeat-area[class~="closed"] {
-    display: none;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.5);
 }
 
 #ss-defeat-text-div {

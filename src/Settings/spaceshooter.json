@@ -164,7 +164,7 @@
     },
     "players": {
         "0": {
-            "color": "#fff",
+            "color": "#3060f0",
             "ship": "Images/Space/players/player(0).png",
             "width": 40,
             "height": 48,
@@ -188,7 +188,7 @@
             }
         },
         "1": {
-            "color": "#fff",
+            "color": "#f02020",
             "ship": "Images/Space/players/player(1).png",
             "width": 40,
             "height": 48,
