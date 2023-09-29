@@ -139,7 +139,7 @@ export default function SpaceShooter() {
                                         <div className = "ss-player-controls-divs" id = "ss-player-0-controls-div">
                                             <div className = "ss-player-details-flex">
                                                 <div className = "ss-player-ship-divs" id = "ss-player-0-ship-div">
-                                                    <img className = "ss-player-ship-images" src = "Images/Space/players/player(0).png"></img>
+                                                    <img className = "ss-player-ship-images" src = "Images/Space/players/player(0).gif"></img>
                                                 </div>
                                                 <div className = "ss-player-label-divs" id = "ss-player-0-label-div">
                                                     <p className = "ss-player-labels" id = "ss-player-0-label">Jogador 1</p>
