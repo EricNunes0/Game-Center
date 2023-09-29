@@ -165,7 +165,7 @@
     "players": {
         "0": {
             "color": "#3060f0",
-            "ship": "Images/Space/players/player(0).png",
+            "ship": "Images/Space/players/player(0).gif",
             "width": 40,
             "height": 48,
             "lifes": 3,
@@ -235,7 +235,7 @@
                 "frames": [
                     {
                         "image": "Images/spaceshooter/levels/frame(0).png",
-                        "animation": "ScenaryFrame0 30s linear infinite"
+                        "animation": "ScenaryFrame0 60s linear infinite"
                     }
                 ]
             },
