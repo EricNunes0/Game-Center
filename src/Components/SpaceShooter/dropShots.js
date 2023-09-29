@@ -58,7 +58,8 @@ export default function dropShots(enemy) {
             if(collisionCheck === true) {
                 drop.remove();
                 audio("../../Audios/space/snd_recharge.mp3", 1);
-                addShots(i, SSJSON.guns[SSJSON.players[0].gun].recharge);
+                let shotsToAdd = SSJSON.guns[SSJSON.players[0].gun].recharge;
+                addShots(i, shotsToAdd, player);
             };
         };
     }, 2);

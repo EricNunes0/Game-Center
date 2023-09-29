@@ -194,6 +194,8 @@
         clip-path: polygon(100% 0%, 100% 100%, 100% 100%, 0 100%, 0 0);
     }
     90% {
+        transform: scale(0.1);
+        top: 150px;
         width: 300px;
         height: 0px;
         opacity: 0;
@@ -932,7 +934,7 @@
     height: 1.5rem;
     top: calc(var(--ss-canvas-height) / 2 + 1.9rem);
     background-color: #2070f0;
-    background-image: linear-gradient(90deg, #2070f0, #3030d0);
+    background-image: linear-gradient(90deg, #2070f0, #3060d0);
 }
 #ss-level-card-description-flag[class~="closed"] {
     opacity: 0;
@@ -1131,8 +1133,9 @@
     border-radius: 3px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    outline: 2px solid rgba(30, 30, 30, 1);
+    outline: 1px solid rgba(30, 30, 30, 1);
     filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.3));
+    box-shadow: 2px 2px 0px 0px rgba(30, 30, 40, 1);
 }
 
 /* Munições restantes */
@@ -1190,11 +1193,12 @@
     content: "";
     position: absolute;
     top: -6px;
-    left: 18px;
-    width: 12px;
+    left: 17px;
+    width: 14px;
     height: 4px;
     background-color: rgba(100, 100, 100, 1);
-    border-radius: 5px;
+    background-image: linear-gradient(180deg, rgba(100, 100, 100, 1) 0%, rgba(50, 50, 50, 1) 100%);
+    border-radius: 3px;
 }
 
 /* Paleta do tempo passando */
@@ -1260,8 +1264,9 @@
     border-radius: 3px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    outline: 2px solid rgba(30, 30, 30, 1);
+    outline: 1px solid rgba(30, 30, 30, 1);
     filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.3));
+    box-shadow: 2px 2px 0px 0px rgba(30, 30, 40, 1);
 }
 
 /* Barras de recarregar arma */
@@ -1513,9 +1518,9 @@
     padding: 1rem;
     border-width: 0;
     border-radius: 10px;
-    box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 3px;
     opacity: 1;
     transition: all 0.3s;
+    box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 3px, rgba(0, 0, 0, 0.6) 2px 2px 0px 0px;
 }
 #ss-victory-area[class~="closed"] {
     pointer-events: none;
@@ -1914,6 +1919,20 @@
     font-size: 12pt;
 }
 
+/* Recarga de armas coletadas */
+.ss-shots-gained {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: "Space";
+    font-size: 12pt;
+    text-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
 /* Fragmentos de explosão */
 .ss-explosion-fragments {
     position: absolute;
@@ -1978,6 +1997,17 @@
 
 /* Animação dos pontos subindo */
 @keyframes SSpointsAnimation {
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+/* Animação do texto das munições subindo */
+@keyframes SSshotsAnimation {
     90% {
         opacity: 1;
     }
