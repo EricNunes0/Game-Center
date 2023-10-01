@@ -12,25 +12,30 @@ import "./styles/shotMoves.css";
 import "./styles/rivals.css";
 import "./styles/scenary.css";
 import "./styles/scenaryFrames.css";
-import SSJSON from "../../Settings/spaceshooter.json";
+import backgroundAnimation from "./backgroundAnimation";
+import changePlayersActive from "./changePlayersActive";
+import changePlayerControls from "./changePlayerControls";
+import checkLevelSelectButtons from "./checkLevelSelectButtons";
+import configButtonControls from "./buttons/configButtonControls";
+import configButtonMobile from "./buttons/configButtonMobile";
+import CreateLevelSelectButtons from "./CreateLevelSelectButtons";
+import CreatePointsHud from "./CreatePointsHud";
+import CreateWeaponHud from "./CreateWeaponHud";
 import restartGame from "./restartGame";
 import startGame from "./startGame";
 import nextLevel from "./nextLevel";
 import levelSelectMenu from "./levelSelectMenu";
-import CreateLevelSelectButtons from "./CreateLevelSelectButtons";
 import menuBack from "./menuBack";
-import checkLevelSelectButtons from "./checkLevelSelectButtons";
-import changePageTitle from "../../Functions/changePageTitle";
-import changePageIcon from "../../Functions/changePageIcon";
-import changePlayersActive from "./changePlayersActive";
-import CreateWeaponHud from "./CreateWeaponHud";
-import CreatePointsHud from "./CreatePointsHud";
-import openConfigsMenu from "./openConfigsMenu";
-import changePlayerControls from "./changePlayerControls";
-import backgroundAnimation from "./backgroundAnimation";
-import pauseGame from "./pauseGame";
 import logoAnimation from "./logoAnimation";
 import disablePauseButton from "./disablePauseButton";
+import pauseGame from "./pauseGame";
+import playerShot from "./playerShot";
+import movePlayer from "./movePlayer";
+import openConfigsMenu from "./openConfigsMenu";
+import mobileControls from "./mobile/mobileControls";
+import changePageTitle from "../../Functions/changePageTitle";
+import changePageIcon from "../../Functions/changePageIcon";
+import SSJSON from "../../Settings/spaceshooter.json";
 
 export default function SpaceShooter() {
     changePageTitle(`Game Center - Space Shooter`);
@@ -40,12 +45,36 @@ export default function SpaceShooter() {
         backgroundAnimation();
         checkLevelSelectButtons();
         disablePauseButton(true);
+        mobileControls(false);
     }, []);
+    const leftArrowImage = "Images/Space/icons/arrowLeft.png";
+    const shotImage = "Images/Space/icons/shot.png";
+    const rightArrowImage = "Images/Space/icons/arrowRight.png";
+    const configButtonArrow = "https://i.imgur.com/nN1rks7.png";
 
     return (
         <div id = "space-shooter-page">
-            <div id = "ss-background">
-                
+            <div id = "ss-background"></div>
+            <div id = "ss-mobile-area">
+                <div id = "ss-mobile-div">
+                    <div id = "ss-mobile-controls-div">
+                        <div className = "ss-mobile-button-divs closed">
+                            <button type = "button" className = "ss-mobile-buttons" onClick={() => movePlayer(0, "left")}>
+                                <img src = {leftArrowImage} className = "ss-mobile-button-icons" width={20} height={20}></img>
+                            </button>
+                        </div>
+                        <div className = "ss-mobile-button-divs closed">
+                            <button type = "button" className = "ss-mobile-buttons" onClick={() => playerShot(0)}>
+                                <img src = {shotImage} className = "ss-mobile-button-icons" width={20} height={20}></img>
+                            </button>
+                        </div>
+                        <div className = "ss-mobile-button-divs closed">
+                            <button type = "button" className = "ss-mobile-buttons" onClick={() => movePlayer(0, "right")}>
+                                <img src = {rightArrowImage} className = "ss-mobile-button-icons" width={20} height={20}></img>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id = "ss-main">
                 <div id = "ss-area">
@@ -116,7 +145,7 @@ export default function SpaceShooter() {
                             <div id = "ss-configs-container">
                                 <div className = "ss-configs-main-divs" id = "ss-configs-controls-main-div">
                                     <div className = "ss-configs-buttons-divs" id = "ss-config-controls-button-div">
-                                        <button type = "button" className = "ss-configs-buttons" id = "ss-config-button-controls">
+                                        <button type = "button" className = "ss-configs-buttons" id = "ss-config-button-controls" onClick={() => {configButtonControls()}}>
                                             <div className = "ss-configs-buttons-flex">
                                                 <div className = "ss-configs-buttons-icons-divs">
                                                     <img className = "ss-configs-buttons-icons" src = "Images/spaceshooter/svgs/gear.svg" width = {40} height = {40}></img>
@@ -130,7 +159,7 @@ export default function SpaceShooter() {
                                                     </div>
                                                 </div>
                                                 <div className = "ss-configs-buttons-arrows-divs">
-                                                    <img className = "ss-configs-buttons-arrows closed" src = "https://i.imgur.com/nN1rks7.png" width = {20} height = {20}></img>
+                                                    <img className = "ss-configs-buttons-arrows closed" id = "ss-config-arrow-controls" src = {configButtonArrow} width = {20} height = {20}></img>
                                                 </div>
                                             </div>
                                         </button>
@@ -148,7 +177,7 @@ export default function SpaceShooter() {
                                             <div className = "ss-player-controls-container">
                                                 <button className = "ss-player-control-divs" id = "ss-player-0-left-button" onClick = {() => changePlayerControls(0, `left`)}>
                                                     <div className = "ss-player-control-image-divs">
-                                                        <img className = "ss-player-control-images" src = "Images/Space/icons/arrowLeft.png" width = {40} height = {40}></img>
+                                                        <img className = "ss-player-control-images" src = {leftArrowImage} width = {40} height = {40}></img>
                                                     </div>
                                                     <div className = "ss-player-control-span-divs">
                                                         <span type = "button" className = "ss-player-control-spans" id = "ss-player-0-left-span">{`<`}</span>
@@ -156,7 +185,7 @@ export default function SpaceShooter() {
                                                 </button>
                                                 <button className = "ss-player-control-divs" id = "ss-player-0-shot-button" onClick = {() => changePlayerControls(0, `shot`)}>
                                                     <div className = "ss-player-control-image-divs">
-                                                        <img className = "ss-player-control-images" src = "Images/Space/icons/shot.png" width = {40} height = {40}></img>
+                                                        <img className = "ss-player-control-images" src = {shotImage} width = {40} height = {40}></img>
                                                     </div>
                                                     <div className = "ss-player-control-span-divs">
                                                         <span type = "button" className = "ss-player-control-spans" id = "ss-player-0-shot-span">Space</span>
@@ -164,7 +193,7 @@ export default function SpaceShooter() {
                                                 </button>
                                                 <button className = "ss-player-control-divs" id = "ss-player-0-right-button" onClick = {() => changePlayerControls(0, `right`)}>
                                                     <div className = "ss-player-control-image-divs">
-                                                        <img className = "ss-player-control-images" src = "Images/Space/icons/arrowRight.png" width = {40} height = {40}></img>
+                                                        <img className = "ss-player-control-images" src = {rightArrowImage} width = {40} height = {40}></img>
                                                     </div>
                                                     <div className = "ss-player-control-span-divs">
                                                         <span type = "button" className = "ss-player-control-spans" id = "ss-player-0-right-span">{`>`}</span>
@@ -184,7 +213,7 @@ export default function SpaceShooter() {
                                             <div className = "ss-player-controls-container">
                                                 <button className = "ss-player-control-divs" id = "ss-player-1-left-button" onClick = {() => changePlayerControls(1, `left`)}>
                                                     <div className = "ss-player-control-image-divs">
-                                                        <img className = "ss-player-control-images" src = "Images/Space/icons/arrowLeft.png" width = {40} height = {40}></img>
+                                                        <img className = "ss-player-control-images" src = {leftArrowImage} width = {40} height = {40}></img>
                                                     </div>
                                                     <div className = "ss-player-control-span-divs">
                                                         <span type = "button" className = "ss-player-control-spans" id = "ss-player-1-left-span">A</span>
@@ -192,7 +221,7 @@ export default function SpaceShooter() {
                                                 </button>
                                                 <button className = "ss-player-control-divs" id = "ss-player-1-shot-button" onClick = {() => changePlayerControls(1, `shot`)}>
                                                     <div className = "ss-player-control-image-divs">
-                                                        <img className = "ss-player-control-images" src = "Images/Space/icons/shot.png" width = {40} height = {40}></img>
+                                                        <img className = "ss-player-control-images" src = {shotImage} width = {40} height = {40}></img>
                                                     </div>
                                                     <div className = "ss-player-control-span-divs">
                                                         <span type = "button" className = "ss-player-control-spans" id = "ss-player-1-shot-span">S</span>
@@ -200,11 +229,42 @@ export default function SpaceShooter() {
                                                 </button>
                                                 <button className = "ss-player-control-divs"  id = "ss-player-1-right-button" onClick = {() => changePlayerControls(1, `right`)}>
                                                     <div className = "ss-player-control-image-divs">
-                                                        <img className = "ss-player-control-images" src = "Images/Space/icons/arrowRight.png" width = {40} height = {40}></img>
+                                                        <img className = "ss-player-control-images" src = {rightArrowImage} width = {40} height = {40}></img>
                                                     </div>
                                                     <div className = "ss-player-control-span-divs">
                                                         <span type = "button" className = "ss-player-control-spans" id = "ss-player-1-right-span">D</span>
                                                     </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className = "ss-configs-main-divs" id = "ss-configs-mobile-main-div">
+                                    <div className = "ss-configs-buttons-divs" id = "ss-config-mobile-button-div">
+                                        <button type = "button" className = "ss-configs-buttons" id = "ss-config-button-mobile" onClick={() => {configButtonMobile()}}>
+                                            <div className = "ss-configs-buttons-flex">
+                                                <div className = "ss-configs-buttons-icons-divs">
+                                                    <img className = "ss-configs-buttons-icons" src = "Images/spaceshooter/svgs/mobile.svg" width = {40} height = {40}></img>
+                                                </div>
+                                                <div className = "ss-configs-buttons-texts-divs">
+                                                    <div className = "ss-configs-buttons-titles-divs">
+                                                        <p className = "ss-configs-buttons-titles" id = "ss-config-button-title-controls">Botões para celular</p>
+                                                    </div>
+                                                    <div className = "ss-configs-buttons-subtitles-divs">
+                                                        <p className = "ss-configs-buttons-subtitles" id = "ss-config-button-subtitle-controls">Ative ou desative os controles para jogar no celular</p>
+                                                    </div>
+                                                </div>
+                                                <div className = "ss-configs-buttons-arrows-divs">
+                                                    <img className = "ss-configs-buttons-arrows closed"  id = "ss-config-arrow-mobile" src = {configButtonArrow} width = {20} height = {20}></img>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div className = "ss-configs-aba-divs closed" id = "ss-config-aba-mobile">
+                                        <div className = "ss-player-controls-divs">
+                                            <div id = "ss-mobile-switch-div">
+                                                <button type="button" id = "ss-mobile-switch" onClick={() => {mobileControls()}}>
+                                                    <span id = "ss-mobile-switch-slider"></span>
                                                 </button>
                                             </div>
                                         </div>
@@ -378,12 +438,6 @@ export default function SpaceShooter() {
                             <button type = "button" className = "ss-controls-buttons" id = "ss-pause-button" onClick = {() => pauseGame()}>
                                 <img className = "ss-controls-buttons-icons" src = "Images/spaceshooter/svgs/pause.svg"></img>
                             </button>
-                            {/*<button className = "ss-controls-buttons" type = "button" onClick = {() => playerShot(0)}>
-                                <img className = "ss-controls-buttons-icons" src = "Images/Space/icons/shot.png"></img>
-                            </button>
-                            <button className = "ss-controls-buttons" type = "button" onClick = {() => movePlayer("right")}>
-                                <img className = "ss-controls-buttons-icons" src = "Images/spaceshooter/svgs/pause.svg"></img>
-    </button>*/}
                         </div>
                         <div id = "ss-hide-area">
                             <div id = "ss-hide-bottom"></div>

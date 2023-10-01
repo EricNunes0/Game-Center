@@ -15,7 +15,6 @@ export default function keyDown() {
     document.addEventListener("keydown", (e) => {
         let keyPressed = e.code;
         if(keyPressed === "Tab") {
-            console.log("Tab gostoso");
             e.preventDefault();
             return;
         };
